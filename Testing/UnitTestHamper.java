@@ -238,5 +238,21 @@ class UnitHamperTest{
         Famliy expected3 = family;
         assertEquals("The family does not match expected one: ", expected3, actual3);
     }
+    
+    //Test exception is thrown when invalid 
+    //arguments are given to the constructor
+    @Test
+    public void testConstructorInvalidArgument(){
+        boolean exceptionThrown;
+        try{
+            int family = 3;
+            Hamper hamper = new Hamper(family);
+            exceptionThrown = false;
+        }
+        catch(IllegalArgumentException e){
+            exceptionThrown = true;
+        }
+        AssertEquals("The exception was not thrown when given invalid arguments: " true, exceptionThrown);
+    }
 }
 
