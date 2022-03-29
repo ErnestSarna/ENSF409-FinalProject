@@ -2,9 +2,9 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 
-class UnitHamperTest{
+class UnitTestHamper{
 
-    UnitHamperTest(){}
+    UnitTestHamper(){}
 
     //tests functionallity of adding a food item
     // and getting the foodlist
