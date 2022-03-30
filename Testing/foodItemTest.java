@@ -149,14 +149,7 @@ public class foodItemTest{
 		assertEquals("getTotalCalories did not return expected value.", testFoodItem.getTotalCalories(), calories);
 	}
 	
-	@Test
-	public void testPercentageToValue(){
-		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double ratio = 0.5;
-		double value = 20;
-		double expected = ratio * value;
-		assertEquals("percentageToValue did not return expected value.", testFoodItem.percentageToValue(ratio, value), expected);
-	}
+}
 	
 	
 	
