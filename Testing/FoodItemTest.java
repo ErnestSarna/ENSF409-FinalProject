@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-public class foodItemTest{
+public class FoodItemTest{
 	
 	public String name = "testFood";
 	public int id = 2;
