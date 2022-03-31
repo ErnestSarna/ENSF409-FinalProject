@@ -7,12 +7,13 @@ import static org.junit.Assert.*;
 public class foodItemTest{
 	
 	public String name = "testFood";
-	public int id = 2;
-	public int grains = 5;
-	public int protein = 10;
-	public int fruitsVeg = 15;
-	public int other = 20;
-	public int calories = 30;
+	public double id = 2;
+	public double grains = 5;
+	public double protein = 10;
+	public double fruitsVeg = 15;
+	public double other = 20;
+	public double calories = 30;
+	public double invalid = -1;
 	
 	
 	@Test
@@ -27,7 +28,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, -1, grains, protein, fruitsVeg, other, calories);
+			FoodItem testFoodItem = new FoodItem(name, invalid, grains, protein, fruitsVeg, other, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -41,7 +42,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, id, -1, protein, fruitsVeg, other, calories);
+			FoodItem testFoodItem = new FoodItem(name, id, invalid, protein, fruitsVeg, other, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -55,7 +56,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, id, grains, -1, fruitsVeg, other, calories);
+			FoodItem testFoodItem = new FoodItem(name, id, grains, invalid, fruitsVeg, other, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -69,7 +70,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, -1, other, calories);
+			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, invalid, other, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -84,7 +85,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, -1, calories);
+			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, invalid, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -98,7 +99,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, -1);
+			FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, invalid);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
