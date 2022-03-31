@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class foodItemTest{
 	
 	public String name = "testFood";
-	public double id = 2;
+	public int id = 2;
 	public double grains = 5;
 	public double protein = 10;
 	public double fruitsVeg = 15;
@@ -28,7 +28,7 @@ public class foodItemTest{
 		boolean correctException = false;
 		
 		try{
-			FoodItem testFoodItem = new FoodItem(name, invalid, grains, protein, fruitsVeg, other, calories);
+			FoodItem testFoodItem = new FoodItem(name, -1, grains, protein, fruitsVeg, other, calories);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
