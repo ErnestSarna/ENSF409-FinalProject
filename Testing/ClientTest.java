@@ -70,8 +70,7 @@ public class ClientTest{
     //Test the getter for CLIENTID within AdultMale
     @Test
     public void testGetClientIDAdultMale(){
-        var adultMale = new AdultMale(38,234,123,89,156);
-        int foundID = adultMale.getClientID();
+        int foundID = AdultMale.getClientID();
         int expectedID = 1;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
@@ -79,8 +78,7 @@ public class ClientTest{
     //Test the getter for CLIENTID within AdultFemale
     @Test
     public void testGetClientIDAdultFemale(){
-        var adultFemale = new AdultFemale(38,234,123,89,156);
-        int foundID = adultFemale.getClientID();
+        int foundID = AdultFemale.getClientID();
         int expectedID = 2;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
@@ -88,8 +86,7 @@ public class ClientTest{
     //Test the getter for CLIENTID within ChildOver8
     @Test
     public void testGetClientIDChildOver8(){
-        var childOver8 = new ChildOver8(38,234,123,89,156);
-        int foundID = childOver8.getClientID();
+        int foundID = ChildOver8.getClientID();
         int expectedID = 3;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
@@ -97,8 +94,7 @@ public class ClientTest{
     //Test the getter for CLIENTID within ChildUnder8
     @Test
     public void testGetClientIDChildUnder8(){
-        var childUnder8 = new ChildUnder8(38,234,123,89,156);
-        int foundID = childUnder8.getClientID();
+        int foundID = ChildUnder8.getClientID();
         int expectedID = 4;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
