@@ -24,6 +24,20 @@ public class FoodItemTest{
 	}
 	
 	@Test
+	public void testConstructorBadName(){
+		boolean correctException = false;
+		
+		try{
+			FoodItem testFoodItem = new FoodItem(null, id, invalid, protein, fruitsVeg, other, calories);
+		}
+		catch(IllegalArgumentException e){
+			correctException = true;
+		}
+		
+		assertEquals("FoodItem Constructor did not throw an IllegalArgumentException when a null name was provided", true, correctException);
+	}
+	
+	@Test
 	public void testConstructorBadId(){
 		boolean correctException = false;
 		
