@@ -16,7 +16,7 @@ public class Hamper {
 	public double getTotalProtein() { return this.totalProtein; }
 	public double getTotalFV() { return this.totalFV; }
 	public double getTotalOther() { return this.totalOther; }
-	public double getTotalCalories { return this.totalCalories; }
+	public double getTotalCalories() { return this.totalCalories; }
 	public int getItems() { return this.items; }
 	
 	//Constructor
