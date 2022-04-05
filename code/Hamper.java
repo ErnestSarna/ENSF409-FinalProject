@@ -20,7 +20,7 @@ public class Hamper {
 	public int getItems() { return this.items; }
 	
 	//Constructor
-	public Hamper(Family family) {
+	public Hamper(Family family) throws IllegalArgumentException {
 		this.family = family;
 	}
 	
