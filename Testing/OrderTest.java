@@ -4,15 +4,15 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-public class OrderTest{
-	
+class OrderTest{
+	private String name = "name";
 	
 	
 	@Test
 	public void testConstructorOneHamper(){
 		int[] memberTypes = {1, 2};
 		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily);
+		Order testOrder = new Order(1, testFamily, name);
 		assertNotNull("Order constructor did not create an object when provided a valid family one hamper", testOrder);
 	}
 	
@@ -20,7 +20,7 @@ public class OrderTest{
 	public void testConstructorMultipleHamper(){
 		int[] memberTypes = {1, 2};
 		Family testFamily = new Family(memberTypes, 3);
-		Order testOrder = new Order(3, testFamily);
+		Order testOrder = new Order(3, testFamily, name);
 		assertNotNull("Order constructor did not create an object when provided with a valid family and three hampers", testOrder);
 	}
 	
@@ -31,7 +31,7 @@ public class OrderTest{
 		try{
 			int[] memberTypes = {1, 2};
 			Family testFamily = new Family(memberTypes, 0);
-			Order testOrder = new Order(0, testFamily);
+			Order testOrder = new Order(0, testFamily, name);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -47,7 +47,7 @@ public class OrderTest{
 		try{
 			int[] memberTypes = {1, 2};
 			Family testFamily = new Family(memberTypes, 1);
-			Order testOrder = new Order(-1, testFamily);
+			Order testOrder = new Order(-1, testFamily, name);
 		}
 		catch(IllegalArgumentException e){
 			correctException = true;
@@ -60,17 +60,33 @@ public class OrderTest{
 	public void testGetHamperAmountOneHamper(){
 		int[] memberTypes = {1, 2};
 		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily);
+		Order testOrder = new Order(1, testFamily, name);
 		assertEquals("getHamperAmount did not return 1 when one hamper was specified", 1, testOrder.getHamperAmount());
 	}
 	
 	@Test
 	public void testGetHamperAmountMultipleHamper(){
-		int[] memerTypes = {1, 2};
+		int[] memberTypes = {1, 2};
 		Family testFamily = new Family(memberTypes, 3);
-		Order testOrder = new Order(3, testFamily);
+		Order testOrder = new Order(3, testFamily, name);
 		assertEquals("getHamperAmount did not return 3 when three hampers were specified", 3, testOrder.getHamperAmount());
 	}
+	
+	@Test
+	public void testGetName(){
+		int[] memberTypes = {1, 2};
+		Family testFamily = new Family(memberTypes, 1);
+		Order testOrder = new Order(1, testFamily, name);
+		assertEquals("getName method did not return the correct name", name, testOrder.getName());
+	}
+	
+	@Test
+	public void testGetHampers(){
+		int[] memberTypes = {1, 2};
+		Family testFamily = new Family(memberTypes, 1);
+		Order testOrder = new Order(1, testFamily, name);
+		assertNotNull("getHampers returned a null object", testOrder.getHampers());
+		
 }
 			
 	
