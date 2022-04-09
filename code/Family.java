@@ -14,6 +14,7 @@ public class Family {
 	public double getNeededFV { return this.neededFV; }
 	public double getNeededOther { return this.neededOther; }
 	public double getNeededCalories { return this.neededCalories; }
+	public ArrayList<Client> getFamilyMembers { return this.familyMembers; }
 	
 	//Constructor
 	public Family(int[] members) throws IllegalArgumentException {
