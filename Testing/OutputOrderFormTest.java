@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-public class OutputOrderFormTest{
+public class outputOrderFormTest{
 	
 	
 	@Test
@@ -20,7 +20,7 @@ public class OutputOrderFormTest{
 	}
 	
 	@Test
-	public void testPrintForm(){
+	public void testPrintFormCreatesFile(){
 		boolean noException = true;
 		
 		try{
@@ -29,7 +29,7 @@ public class OutputOrderFormTest{
 			Order testOrder = new Order(1, tesstFamily);
 			OutputOrderForm testForm = new OutputOrderForm(testOrder);
 			
-			testForm.printForm();
+			String temp = testForm.printForm();
 		}
 		catch(IOException e){
 			noException = false;
@@ -39,7 +39,7 @@ public class OutputOrderFormTest{
 	
 	
 	@Test
-	public void testConstructorGoodData(){
+	public void testConstructorBadData(){
 
 	boolean correctException = false;
 	try{
@@ -51,5 +51,16 @@ public class OutputOrderFormTest{
 	
 	assertEquals("OutputOrderForm constructor did not throw an IllegalArgumentException when a null was used in constructor.", true, correctException);
 	}
+	
+	@Test
+	public void testPrintFormReturnsValidString(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Order testOrder = new Order(1, tesstFamily);
+		OutputOrderForm testForm = new OutputOrderForm(testOrder);
+			
+		assertNotNull("printForm returned a null string", testForm.printForm());
+	}
+		
 }
 	
