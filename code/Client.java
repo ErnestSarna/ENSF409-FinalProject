@@ -17,6 +17,8 @@ abstract class Client {
         other = percentageToValue(otherPercent);
     }
 
+    public Client(){} //An empty constructor for the Client class
+
     public static double getWholeGrains() { //Getter for the wholeGrains variable
         return wholeGrains;
     }
