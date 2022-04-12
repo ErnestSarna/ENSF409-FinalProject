@@ -46,7 +46,14 @@ public class FoodEfficiencyAlgorithm{
         ArrayList<FoodItem> foodList = new ArrayList<>(Arrays.asList(current));
         hamper.addFoodList(foodList);
     }
-
+    
+    public void updateInventory(){
+        for(int i = 0; i < hamper.getItems(); i++){
+            int id = hamper.getFoodList().get(i).getID();
+            dataBase.deleteItem(id);
+        }
+    }    
+        
     public void findCombinations(int n, int r)
     {
         // A temporary array to store all combination one by one
