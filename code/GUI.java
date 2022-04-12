@@ -1,22 +1,31 @@
-package FinalProject;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.awt.event.*;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.CardLayout;
 
 public class GUI extends JFrame implements ActionListener, MouseListener, KeyListener{
+    //info for hampers and order
+    private String name;
     private int[] clients = new int[4];
-    // 0-Start, 1-choosefamily, 2-processing, 3-addAnother, 4-confirmOrder
-    private int cardScreen = 0;
+
+    //info for the main to use
+    private boolean addAnother = true;
     private boolean clearOrder = false;
     private boolean waiting = true;
+    private boolean processing = false;
     private boolean orderFinished = false;
+    private boolean yesNoScreen = false;
+    private boolean confirmScreen = false;
     
     private JLabel startPrompt;
     private JLabel clientPrompt;
@@ -26,6 +35,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     private JLabel adultFemaleLabel;
     private JLabel processingLabel;
     private JLabel addAnotherLabel;
+    private JLabel processingOrder;
     private JLabel pleaseConfirmLabel;
     private JLabel orderLabel;
 
@@ -38,6 +48,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     private JButton restartOrder;
     private JButton confirmButton;
 
+    private JTextField clientName;
     private JTextField childUnder8;
     private JTextField childOver8;
     private JTextField adultFemale;
@@ -52,7 +63,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     }
 
     public void setupGUI(){
-        startPrompt = new JLabel("Press start to begin your order");
+        //Instantiating all the labels
+        startPrompt = new JLabel("   Enter your name and press start to begin   ",SwingConstants.CENTER);
+        startPrompt.setFont(new Font("Serif", Font.PLAIN, 20));
         clientPrompt = new JLabel("Please enter your family information:");
         under8Label = new JLabel("Children under 8: ");
         over8Label = new JLabel("Children over 8: ");
@@ -60,23 +73,31 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         adultMaleLabel = new JLabel("Adult males: ");
         processingLabel = new JLabel("Processing your hamper...");
         addAnotherLabel = new JLabel("Would you like to add another hamper?");
+        processingOrder = new JLabel("Processing your order...");
         pleaseConfirmLabel = new JLabel("Please confirm that this is your order: ");
         orderLabel = new JLabel();
 
+        //creating the textfields and updating their listeners
+        clientName = new JTextField("Your Name       ");
+        clientName.setFont(new Font("Serif", Font.PLAIN, 16));
         childUnder8 = new JTextField("Number of children under 8");
         childOver8 = new JTextField("Number of children over 8");
         adultFemale = new JTextField("Number of adult females");
         adultMale = new JTextField("Number of adult males");
+        clientName.addMouseListener(this);
         childOver8.addMouseListener(this);
         childUnder8.addMouseListener(this);
         adultFemale.addMouseListener(this);
         adultMale.addMouseListener(this);
+        clientName.addKeyListener(this);
         childOver8.addKeyListener(this);
         childUnder8.addKeyListener(this);
         adultFemale.addKeyListener(this);
         adultMale.addKeyListener(this);
 
+        //creating the buttons and adding their listeners
         startButton = new JButton("Start");
+        startButton.setFont(new Font("Serif", Font.PLAIN, 18));
         startButton.addActionListener(this);
         submitFamButton = new JButton("Submit");
         submitFamButton.addActionListener(this);
@@ -89,11 +110,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         confirmButton = new JButton("Confirm Order");
         confirmButton.addActionListener(this);
 
+        //used as base layout
         cardLayout = new CardLayout();
-
         deck = new JPanel();
         deck.setLayout(cardLayout);
 
+        //instantiating panels that user will see
         JPanel startPanel = new JPanel();
         startPanel.setLayout(new FlowLayout());
         JPanel familyPanel = new JPanel();
@@ -102,16 +124,22 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         processingPanel.setLayout(new FlowLayout());
         JPanel addAnotherPanel = new JPanel();
         addAnotherPanel.setLayout(new BoxLayout(addAnotherPanel, BoxLayout.Y_AXIS));
+        JPanel processOrder = new JPanel();
+        processOrder.setLayout(new FlowLayout());
         JPanel confirmOrder = new JPanel();
         confirmOrder.setLayout(new BoxLayout(confirmOrder, BoxLayout.Y_AXIS));
 
+        //adding panels to the card layout
         deck.add("Start", startPanel);
         deck.add("Choose Family", familyPanel);
         deck.add("Processing", processingPanel);
         deck.add("addAnother", addAnotherPanel);
+        deck.add("processOrder", processOrder);
         deck.add("confirmOrder", confirmOrder);
 
+        //adding the components of each panel
         startPanel.add(startPrompt);
+        startPanel.add(clientName);
         startPanel.add(startButton);
         
         familyPanel.add(clientPrompt);
@@ -131,6 +159,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         addAnotherPanel.add(yesButton);
         addAnotherPanel.add(noButton);
 
+        processOrder.add(processingOrder);
+
         confirmOrder.add(pleaseConfirmLabel);
         confirmOrder.add(orderLabel);
         confirmOrder.add(restartOrder);
@@ -140,11 +170,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     }
 
     public void actionPerformed(ActionEvent event){
+        //if user presses start button set clientname and
+        //go to choose family panel
         if(event.getSource().equals(startButton)){
             cardLayout.show(deck, "Choose Family");
-            cardScreen = 1;
+            name = clientName.getText();
         }
         
+        //take all the family parameters if submit button 
         if(event.getSource().equals(submitFamButton)){
             String adultMales = adultMale.getText();
             clients[0] = validateInput(adultMales);
@@ -174,7 +207,6 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             }
             if(!error){
                 cardLayout.show(deck, "Processing");
-                cardScreen = 2;
                 adultMale.setText("Number of adult males");
                 adultFemale.setText("Number of adult females");
                 childOver8.setText("Number of children over 8");
@@ -184,24 +216,27 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         } 
 
         if(event.getSource().equals(yesButton)){
+            yesNoScreen = false;
             cardLayout.show(deck, "Choose Family");
-            cardScreen = 2;
         }
 
         if(event.getSource().equals(noButton)){
-            cardLayout.show(deck, "confirmOrder");
-            cardScreen = 4;
+            addAnother = false;
+            yesNoScreen = false;
+            cardLayout.show(deck, "processOrder");
+            processing = true;
         }
 
         if(event.getSource().equals(restartOrder)){
             JOptionPane.showMessageDialog(this, "Your order has been cleared, please try again.\nSorry for the inconvenience.");
             clearOrder = true;
+            confirmScreen = false;
             cardLayout.show(deck, "Start");
-            cardScreen = 0;
         }
 
         if(event.getSource().equals(confirmButton)){
             JOptionPane.showMessageDialog(this, "Thank you, your order has been complete!");
+            confirmScreen = false;
             super.dispose();
             orderFinished = true;
         }
@@ -218,6 +253,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         return out;
     }
 
+
     @Override
     public void mouseClicked(MouseEvent event) {
         if(event.getSource().equals(childOver8)){
@@ -232,13 +268,37 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         if(event.getSource().equals(adultMale)){
             adultMale.setText("");
         }
-        
+        if(event.getSource().equals(clientName)){
+            clientName.setText("");
+        }  
     }
 
     public void processComplete(){
         cardLayout.show(deck, "addAnother");
-        cardScreen = 3;
         waiting = true;
+        yesNoScreen = true;
+    }
+
+    public void orderComplete(){
+        cardLayout.show(deck, "confirmOrder");
+        confirmScreen = true;
+        processing = false;
+    }
+
+    public boolean getProcessing(){
+        return this.processing;
+    }
+
+    public boolean getAddAnother(){
+        return this.addAnother;
+    }
+
+    public boolean getYesNoScreen(){
+        return this.yesNoScreen;
+    }
+
+    public boolean getConfirmScreen(){
+        return this.confirmScreen;
     }
 
     public boolean getWaiting(){
@@ -255,6 +315,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
 
     public int[] getClients(){
         return this.clients;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setOrderLabel(String label){
+        this.orderLabel.setText(label);
     }
 
     @Override
@@ -324,9 +392,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                     adultFemale.setText("Number of adult females");
                     childOver8.setText("Number of children over 8");
                     childUnder8.setText("Number of children under 8");
-                    cardScreen = 2;
                     waiting = false;
                 }
+            }
+            if(e.getSource().equals(clientName)){
+                cardLayout.show(deck, "Choose Family");
+                name = clientName.getText();
+                clientName.setText("Your name");
             }
         }
         
@@ -337,18 +409,3 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         // TODO Auto-generated method stub
         
     }
-    public static void main(String[] args){
-        GUI gui = new GUI();
-        gui.setVisible(true);
-        while(!gui.getOrderFinished()){
-            while(gui.getWaiting() && !gui.getOrderFinished()){
-                try{
-                    TimeUnit.SECONDS.sleep(1);
-                }
-                catch(Exception e){
-                }
-            }
-            gui.processComplete();
-        }
-    }
-}
