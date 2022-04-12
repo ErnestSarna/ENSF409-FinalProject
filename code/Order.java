@@ -4,7 +4,7 @@ import java.util.*;
 class Order{
 	//Member variables
 	private ArrayList<Hamper> hampers = new ArrayList<Hamper>();
-	private String name = " "
+	private String name = " ";
 	
 	
 	
