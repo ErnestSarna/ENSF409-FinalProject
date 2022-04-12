@@ -67,6 +67,10 @@ public class Main {
             //else print the order and terminate
             else{
                 output.printForm();
+                for(int i = 0; i < order.getHamperAmount(); i++){
+                    FoodEfficiencyAlgorithm algo = new FoodEfficiencyAlgorithm(order.getHampers().get(i));
+                    algo.updateInventory();
+                }
                 break;
             }
         }
