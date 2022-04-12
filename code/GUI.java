@@ -178,6 +178,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         }
         
         //take all the family parameters if submit button 
+        // is pressed
         if(event.getSource().equals(submitFamButton)){
             String adultMales = adultMale.getText();
             clients[0] = validateInput(adultMales);
@@ -188,6 +189,9 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             String over8 = childOver8.getText();
             clients[2] = validateInput(over8);
             boolean error = false;
+            
+            //checks if validate input recieved invalid inputs and if so an
+            //appropiate error message is given
             for(int i = 0; i < clients.length; i++){
                 if(clients[i] == -1){
                     if(i == 0){
@@ -205,6 +209,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                     error = true;
                 }
             }
+            //if no error is found reset text fields and update waiting
             if(!error){
                 cardLayout.show(deck, "Processing");
                 adultMale.setText("Number of adult males");
@@ -215,11 +220,16 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             }
         } 
 
+        //if user hits yes go back to choose family screen
+        // and no longer on yesNoScreen
         if(event.getSource().equals(yesButton)){
             yesNoScreen = false;
             cardLayout.show(deck, "Choose Family");
         }
 
+        //if no is hit no longer adding more hampers
+        //and no longer on yesNoScreen, visible panel is now
+        //processing order
         if(event.getSource().equals(noButton)){
             addAnother = false;
             yesNoScreen = false;
@@ -227,6 +237,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             processing = true;
         }
 
+        //if incorrect order message is sent to user and
+        //start screen is the visible panel
         if(event.getSource().equals(restartOrder)){
             JOptionPane.showMessageDialog(this, "Your order has been cleared, please try again.\nSorry for the inconvenience.");
             clearOrder = true;
@@ -234,6 +246,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             cardLayout.show(deck, "Start");
         }
 
+        //if confirm order is pressed, thank you message and gui closes
         if(event.getSource().equals(confirmButton)){
             JOptionPane.showMessageDialog(this, "Thank you, your order has been complete!");
             confirmScreen = false;
@@ -242,6 +255,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         }
     }
 
+    //validates the input for the number of clients
+    // is correct
     private int validateInput(String input){
         input = input.replaceAll("\\s", "");
         for(int i = 0; i < input.length(); i++){
@@ -253,7 +268,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         return out;
     }
 
-
+    //When a textfield is clicked by mouse the contents are cleared
     @Override
     public void mouseClicked(MouseEvent event) {
         if(event.getSource().equals(childOver8)){
@@ -273,18 +288,23 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         }  
     }
 
+    //Changes panel to the screen for user to add another
+    //and updates the boolean states accordingly
     public void processComplete(){
         cardLayout.show(deck, "addAnother");
         waiting = true;
         yesNoScreen = true;
     }
 
+    //Changes panel to confirm order screen
+    //and updates boolean states of gui
     public void orderComplete(){
         cardLayout.show(deck, "confirmOrder");
         confirmScreen = true;
         processing = false;
     }
 
+    //getters
     public boolean getProcessing(){
         return this.processing;
     }
@@ -321,6 +341,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         return this.name;
     }
 
+    //sets the label on confirm order to the draft order form
     public void setOrderLabel(String label){
         this.orderLabel.setText(label);
     }
@@ -354,10 +375,13 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
         
         
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            //Same functionality as the code from lines 180-221
+            //except is prompted if the user clicks enter in any of the client information
+            //fields
             if(e.getSource().equals(adultMale) || e.getSource().equals(adultFemale)
                 || e.getSource().equals(childOver8) || e.getSource().equals(childUnder8)){
                 String adultMales = adultMale.getText();
@@ -395,6 +419,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                     waiting = false;
                 }
             }
+            //click enter in text field is like clicking the submit button
             if(e.getSource().equals(clientName)){
                 cardLayout.show(deck, "Choose Family");
                 name = clientName.getText();
