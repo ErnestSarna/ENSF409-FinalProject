@@ -10,6 +10,7 @@ public class Main {
         dataBase.selectClientNeeds();
         Order order = new Order();
         GUI gui = new GUI();
+        gui.setVisible(true);
 
         while(true){
             //While user is still adding hampers
