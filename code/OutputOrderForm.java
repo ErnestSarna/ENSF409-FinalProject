@@ -34,7 +34,7 @@ class OutputOrderForm{
 		String orderForm = "Example Food Bank \n" +
 			"Hamper Order Form \n" +
 			"\n" +
-			"Name: " + ORDER_FORM.getName() + "\n" + //getName() method not yet implemented
+			"Name: " + ORDER_FORM.getName() + "\n" + 
 			"Date: " + LocalDate.now().toString() + "\n" +
 			"\n" +
 			"Original Request: \n" +
