@@ -34,7 +34,7 @@ public class Hamper {
 			this.totalGrains += foodList.get(i).getTotalGrains();
 			this.totalProtein += foodList.get(i).getTotalProtein();
 			this.totalFV += foodList.get(i).getTotalFruitsVeg();
-			this.totalOther += foodItem.get(i)getTotalOther();
+			this.totalOther += foodItem.get(i).getTotalOther();
 			this.totalCalories += foodItem.get(i).TotalCalories();
 		}
 	}
