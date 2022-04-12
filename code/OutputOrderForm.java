@@ -35,7 +35,7 @@ class OutputOrderForm{
 			"Hamper Order Form \n" +
 			"\n" +
 			"Name: " + ORDER_FORM.getName() + "\n" + //getName() method not yet implemented
-			"Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy MM dd")) + "\n" +
+			"Date: " + LocalDate.now().toString() + "\n" +
 			"\n" +
 			"Original Request: \n" +
 			originalRequest() + "\n" + 
