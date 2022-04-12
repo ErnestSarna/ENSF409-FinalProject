@@ -25,7 +25,7 @@ public class FoodEfficiencyAlgorithm{
         findCombinations(foodItems.size(), 1);
 
         FoodItem[] current = validCombinations.get(0);
-        int neededCalories = hamper.getFamily.getNeededCalories();
+        int neededCalories = (int)hamper.getFamily().getNeededCalories();
         for(int i=1;i<validCombinations.size();i++){
 
             int calories1 = 0;
@@ -71,8 +71,8 @@ public class FoodEfficiencyAlgorithm{
                 proteins += temp[i].getTotalProtein();
                 other += temp[i].getTotalOther();
             }
-            if(fruitsVeg >= hamper.getFamily.getNeededFV() && grains >= hamper.getFamily.getNeededGrains() && 
-                proteins >= hamper.getFamily.getNeededProtein() && other >= hamper.getFamily.getNeededOther()){
+            if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
+                proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
                     validCombinations.add(data);
             }
             return;
