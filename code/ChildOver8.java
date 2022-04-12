@@ -8,6 +8,10 @@ public class ChildOver8 extends Client{
         super(grainsPercent, proteinsPercent, fruitsVeggiesPercent, otherPercent, calories);
     }
 
+    public ChildOver8(){ //An empty constructor for the ChildOver8 class
+        super();
+    } 
+
     @Override
     public int getClientID(){ //Getter for the CLIENT_ID
         return CLIENT_ID;
