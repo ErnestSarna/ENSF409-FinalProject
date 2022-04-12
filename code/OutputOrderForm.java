@@ -43,7 +43,7 @@ class OutputOrderForm{
 			hamperItems() + "\n";
 		
 		try{
-			String fileName = ORDER_FORM.getName() + "'s_Order.txt"
+			String fileName = ORDER_FORM.getName() + "'s_Order.txt";
 			BufferedReader outputStream = new BufferedWriter(new FileWriter(fileName));
 			outputStream.write(orderForm);
 		}
