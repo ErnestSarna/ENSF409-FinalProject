@@ -44,7 +44,7 @@ class OutputOrderForm{
 		
 		try{
 			String fileName = ORDER_FORM.getName() + "'s_Order.txt";
-			BufferedReader outputStream = new BufferedWriter(new FileWriter(fileName));
+			BufferedWriter outputStream = new BufferedWriter(new FileWriter(fileName));
 			outputStream.write(orderForm);
 			outputStream.close();
 		}
