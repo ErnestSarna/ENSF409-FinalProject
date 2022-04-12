@@ -7,7 +7,9 @@ abstract class Client {
     private static double other;
     private static int calories;
 
-    public Client(int grainsPercent, int protiensPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories){
+    //Constructor for the client class that sets all the variables, it uses the percentageToValue method to convert the different food group
+    //percentages into actual numbers using the total amount of calories
+    public Client(int grainsPercent, int protiensPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories) throws IllegalArgumentException{
         calories = totalCalories;
         wholeGrains = percentageToValue(grainsPercent);
         protiens = percentageToValue(protiensPercent);
@@ -30,9 +32,11 @@ abstract class Client {
     public static int getCalories() { //Getter for the calories variable
         return calories;
     }
+
+    //Abstract method for the getter for the clientID which will be overwritten in each individual client class
     abstract int getClientID();
 
-    private static double percentageToValue(int percentage){ //Method to find
+    private static double percentageToValue(int percentage){ //Method to find a certain percentage from a total value
 		double ratio = (double) percentage / 100;
 		return ratio * calories;
 	}
