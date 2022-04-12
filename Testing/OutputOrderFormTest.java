@@ -12,7 +12,11 @@ public class outputOrderFormTest{
 		
 		int[] famArray = {1, 2};
 		Family testFamily = new Family(famArray);
-		Order testOrder = new Order(1, tesstFamily);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
+		testOrder.setName("Test Name");
+		
 		
 		OutputOrderForm testForm = new OutputOrderForm(testOrder);
 		
@@ -26,10 +30,15 @@ public class outputOrderFormTest{
 		try{
 			int[] famArray = {1, 2};
 			Family testFamily = new Family(famArray);
-			Order testOrder = new Order(1, tesstFamily);
+			Hamper testHamper = new Hamper(testFamily);
+			Order testOrder = new Order();
+			testOrder.add(testHamper);
+			testOrder.setName("Test Name");
+		
+		
 			OutputOrderForm testForm = new OutputOrderForm(testOrder);
 			
-			String temp = testForm.printForm();
+			testForm.printForm();
 		}
 		catch(IOException e){
 			noException = false;
@@ -41,25 +50,32 @@ public class outputOrderFormTest{
 	@Test
 	public void testConstructorBadData(){
 
-	boolean correctException = false;
-	try{
-		OutputOrderForm testForm = new OutputOrderForm(null);
-	}
-	catch(IllegalArgumentException e){
-		correctException = true;
-	}
-	
-	assertEquals("OutputOrderForm constructor did not throw an IllegalArgumentException when a null was used in constructor.", true, correctException);
-	}
+		boolean correctException = false;
+		try{
+			OutputOrderForm testForm = new OutputOrderForm(null);
+		}
+		catch(IllegalArgumentException e){
+			correctException = true;
+		}
+		
+		assertEquals("OutputOrderForm constructor did not throw an IllegalArgumentException when a null was used in constructor.", true, correctException);
+		}
+		
+}
 	
 	@Test
-	public void testPrintFormReturnsValidString(){
+	public void testcheckOrderFormReturnsValidString(){
 		int[] famArray = {1, 2};
 		Family testFamily = new Family(famArray);
-		Order testOrder = new Order(1, tesstFamily);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
+		testOrder.setName("Test Name");
+		
+		
 		OutputOrderForm testForm = new OutputOrderForm(testOrder);
 			
-		assertNotNull("printForm returned a null string", testForm.printForm());
+		assertNotNull("checkOrderForm returned a null string", testForm.checkOrderForm());
 	}
 		
 }
