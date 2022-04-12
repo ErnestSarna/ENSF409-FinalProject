@@ -5,14 +5,15 @@ import java.io.*;
 
 class OutputOrderForm{
 	//Member variable
-	private final Order ORDER_FORM; //ASK if all caps is static or final
+	private final Order ORDER_FORM;
 	
 	//Constructor
 	public OutputOrderForm(Order info) throws IllegalArgumentException{
 		this.ORDER_FORM = info;
 	}
 	
-	public String printForm(){ 
+	//Method to return a string of order form
+	public String checkOrderForm(){ 
 
 		String orderForm = "Example Food Bank \n" +
 			"Hamper Order Form \n" +
@@ -24,10 +25,23 @@ class OutputOrderForm{
 			originalRequest() + "\n" + 
 			"\n" + 
 			hamperItems() + "\n";
-			
-			
-			
-		//Create output file
+
+		return orderForm;			
+	}
+	
+	//Method to print a file containing the order form string
+	public void printForm(){
+		String orderForm = "Example Food Bank \n" +
+			"Hamper Order Form \n" +
+			"\n" +
+			"Name: " + ORDER_FORM.getName() + "\n" + //getName() method not yet implemented
+			"Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy MM dd")) + "\n" +
+			"\n" +
+			"Original Request: \n" +
+			originalRequest() + "\n" + 
+			"\n" + 
+			hamperItems() + "\n";
+		
 		try{
 			BufferedReader outputStream = new BufferedWriter(new FileWriter("OrderForm.txt"));
 			outputStream.write(orderForm);
@@ -44,10 +58,9 @@ class OutputOrderForm{
 				System.out.println("Couldn't close file");
 			}
 		}
-		return orderForm;			
 	}
 	
-	
+	//Helper methods for creating order form string
 	public String hamperItems(){ 
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
@@ -73,7 +86,7 @@ class OutputOrderForm{
 		return itemBuilder.toString();
 	}
 	
-	public String originalRequest(){	//Add this to UML
+	public String originalRequest(){	
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
 		StringBuilder requestBuilder = new StringBuilder(); //Set size?
