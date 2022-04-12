@@ -12,7 +12,7 @@ class Order{
 	public Order(){}
 	
 	//Add method
-	public void add(Hamper hamper){
+	public void add(Hamper newHamper){
 		hampers.add(newHamper);
 	}
 	
