@@ -18,6 +18,7 @@ public class Hamper {
 	public double getTotalOther() { return this.totalOther; }
 	public double getTotalCalories() { return this.totalCalories; }
 	public int getItems() { return this.items; }
+	public Family getFamily() { return this.family; }
 	
 	//Constructor
 	public Hamper(Family family) throws IllegalArgumentException {
