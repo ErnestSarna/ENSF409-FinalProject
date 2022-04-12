@@ -24,7 +24,7 @@ public class FoodEfficiencyAlgorithm{
     public void fillHamper() throws FoodShortageException{
         findCombinations(foodItems.size(), 1);
 
-        if(foodItems.isEmpty()){
+        if(validCombinations.isEmpty()){
             throw new FoodShortageException();
         }
         
