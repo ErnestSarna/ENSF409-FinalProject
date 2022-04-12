@@ -1,6 +1,5 @@
 package edu.ucalgary.ensf409;
 import java.time.LocalDate;
-import java.text.Format;
 import java.io.*;
 import java.util.*;
 
@@ -19,8 +18,8 @@ class OutputOrderForm{
 		String orderForm = "Example Food Bank \n" +
 			"Hamper Order Form \n" +
 			"\n" +
-			"Name: " + ORDER_FORM.getName() + "\n" + //getName() method not yet implemented
-			"Date: " + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy MM dd")) + "\n" +
+			"Name: " + ORDER_FORM.getName() + "\n" + 
+			"Date: " + LocalDate.now().toString() + "\n" +
 			"\n" +
 			"Original Request: \n" +
 			originalRequest() + "\n" + 
@@ -44,20 +43,17 @@ class OutputOrderForm{
 			hamperItems() + "\n";
 		
 		try{
-			BufferedReader outputStream = new BufferedWriter(new FileWriter("OrderForm.txt"));
+			String fileName = ORDER_FORM.getName() + "'s_Order.txt"
+			BufferedReader outputStream = new BufferedWriter(new FileWriter(fileName));
 			outputStream.write(orderForm);
 		}
 		catch(IOException e){
 			System.out.println("An IO Error Occured");
 		}
 		finally{
-			try{
-				outputStream.close();
-			}
+			outputStream.close();
+		}
 
-			catch(IOException e){
-				System.out.println("Couldn't close file");
-			}
 		}
 	}
 	
@@ -94,7 +90,7 @@ class OutputOrderForm{
 		
 		int hamperNum = 1;
 		while(iter.hasNext()){	//Iterate through Order to grab each hamper
-			ArrayList<Client> familyhList = iter.next().getFamily().getFamilyMembers();
+			ArrayList<Client> familyList = iter.next().getFamily().getFamilyMembers();
 			Iterator<Client> familyIterator = familyList.iterator();
 			
 			StringBuilder familyGetter = new StringBuilder(); //Set size?
@@ -177,3 +173,4 @@ class OutputOrderForm{
 	
 
 }
+
