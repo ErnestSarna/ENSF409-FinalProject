@@ -35,7 +35,7 @@ public class Family {
 		//fill client ArrayList by Clinet type
 		for (int i = 0; i < members.length; i++) {
 			//no negative amounts of client types
-			if (members[i] > 0) {
+			if (members[i] >= 0) {
 				if (i == 0){
 					for (int j = 0; j < members[i]; j++) {
 						this.familyMembers.add(new AdultMale());
