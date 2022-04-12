@@ -14,9 +14,9 @@ public class FamilyTest{
 		assertNotNull("Family constructor failed to create a Family object when given valid data", family);
 	}
 		
-	//Tests Family constructor action when given bad data
+	//Tests Family constructor action when given wrong amount of data
 	@Test
-	public void testFamilyConstructorInvalidData(){
+	public void testFamilyConstructorWrongDataAmount(){
 		boolean correctException = false;
 		
 		try {
@@ -25,7 +25,22 @@ public class FamilyTest{
 			correctException = true;
 		}
 		
-		assertTrue("Family constructor did not throw an IllegalArgumentException when given invalid data", correctException);
+		assertTrue("Family constructor did not throw an IllegalArgumentException when given invalid amount of data", correctException);
+	}
+	
+	//Tests Family constructor action when given invalid data
+	@Test
+	public void testFamilyConstructorInvalidDataValues(){
+		boolean correctException = false;
+		int array[] = {1, 2, -3, 4};
+		
+		try {
+			Family family = new Family(array);
+		} catch (IllegalArgumentException e) {
+			correctException = true;
+		}
+		
+		assertTrue("Family constructor did not throw an IllegalArgumentException when given invalid data values", correctException);
 	}
 	
 	//Tests neededGrains getter within Family (family consists of 3 "AdultMales")
