@@ -11,7 +11,7 @@ public class DataBase {
 
     public void createConnection(){ //Method for opening the database connection
         try{
-            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/FOOD_INVENTORY", "student", "ensf");
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/food_inventory", "student", "ensf");
         }
         catch(SQLException e){
             e.printStackTrace();
