@@ -14,12 +14,12 @@ public class Family {
 	private double neededCalories = 0;
 	
 	/** Getters **/
-	public double getNeededGrains { return this.neededGrains; }
-	public double getNeededProtein { return this.neededProtein; }
-	public double getNeededFV { return this.neededFV; }
-	public double getNeededOther { return this.neededOther; }
-	public double getNeededCalories { return this.neededCalories; }
-	public ArrayList<Client> getFamilyMembers { return this.familyMembers; }
+	public double getNeededGrains() { return this.neededGrains; }
+	public double getNeededProtein() { return this.neededProtein; }
+	public double getNeededFV() { return this.neededFV; }
+	public double getNeededOther() { return this.neededOther; }
+	public double getNeededCalories() { return this.neededCalories; }
+	public ArrayList<Client> getFamilyMembers() { return this.familyMembers; }
 	
 	/**
 	Constructor
