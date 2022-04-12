@@ -54,7 +54,7 @@ class OutputOrderForm{
 			outputStream.close();
 		}
 
-		}
+		
 	}
 	
 	//Helper methods for creating order form string
