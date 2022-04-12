@@ -60,10 +60,14 @@ public class FoodEfficiencyAlgorithm{
                                 FoodItem data[], int j)
     {
         FoodItem[] temp = new FoodItem[r];
+		
         // Current combination is ready to be printed, print it
         if (index == r)
         {
-            double fruitsVeg, grains, proteins, other;
+            double fruitsVeg = 0;
+			double grains = 0;
+			double proteins = 0;
+			double other = 0;
             boolean tempCheck = false;
             for(int i=0; i<temp.length; i++){
                 fruitsVeg += temp[i].getTotalFruitsVeg();
