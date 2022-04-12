@@ -26,7 +26,7 @@ public class Hamper {
 	
 	//accepts foodItem to add to foodList
 	//increments each value nutrients value accordingly
-	public void addFoodItem(ArrayList<FoodItem> foodList) {
+	public void addFoodList(ArrayList<FoodItem> foodList) {
 		this.foodList = foodList;
 		this.items = foodList.size();
 		for (int i = 0; i < this.foodList.size(); i++){
