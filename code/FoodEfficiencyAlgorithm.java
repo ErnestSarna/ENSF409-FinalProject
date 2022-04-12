@@ -50,7 +50,7 @@ public class FoodEfficiencyAlgorithm{
     public void findCombinations(int n, int r)
     {
         // A temporary array to store all combination one by one
-        int data[]=new int[r];
+        FoodItem data[] = new FoodItem[r];
  
         // Print all combination using temporary array 'data[]'
         combinationUtil(n, r, 0, data, 0);
@@ -83,23 +83,8 @@ public class FoodEfficiencyAlgorithm{
         return;
 
         // current is included, put next at next location
-        data[index] = arr[i];
-
-        double fruitsVeg, grains, proteins, other;
-        boolean tempCheck = false, dataCheck = false;
-        for(int i=0; i<temp.length; i++){
-            fruitsVeg += temp[i].getTotalFruitsVeg();
-            grains += temp[i].getTotalGrains();
-            proteins += temp[i].getTotalProtein();
-            other += temp[i].getTotalOther();
-        }
-
-        for(int i=0; i<temp.length; i++){
-            fruitsVeg += data[i].getTotalFruitsVeg();
-            grains += data[i].getTotalGrains();
-            proteins += data[i].getTotalProtein();
-            other += data[i].getTotalOther();
-        }
+        data[index] = foodItems.get(j);
+        
         combinationUtil(n, r, index+1, data, j+1);
  
         // current is excluded, replace it with next (Note that
