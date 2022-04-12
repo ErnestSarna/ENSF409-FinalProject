@@ -1,39 +1,39 @@
 package edu.ucalgary.ensf409;
 
 abstract class Client {
-    private static double WHOLE_GRAINS;
-    private static double PROTEINS;
-    private static double FRUITS_VEGGIES;
-    private static double OTHER;
-    private static int CALORIES;
+    private static double wholeGrains;
+    private static double protiens;
+    private static double fruitsVeggies;
+    private static double other;
+    private static int calories;
 
-    public Client(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int calories){
-        CALORIES = calories;
-        WHOLE_GRAINS = percentageToValue(grainsPercent);
-        PROTEINS = percentageToValue(proteinsPercent);
-        FRUITS_VEGGIES = percentageToValue(fruitsVeggiesPercent);
-        OTHER = percentageToValue(otherPercent);
+    public Client(int grainsPercent, int protiensPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories){
+        calories = totalCalories;
+        wholeGrains = percentageToValue(grainsPercent);
+        protiens = percentageToValue(protiensPercent);
+        fruitsVeggies = percentageToValue(fruitsVeggiesPercent);
+        other = percentageToValue(otherPercent);
     }
 
-    public static double getWholeGrains() {
-        return WHOLE_GRAINS;
+    public static double getWholeGrains() { //Getter for the wholeGrains variable
+        return wholeGrains;
     }
-    public static double getProteins() {
-        return PROTEINS;
+    public static double getProtiens() { //Getter for the proteins variable
+        return protiens;
     }
-    public static double getFruitsVeggies() {
-        return FRUITS_VEGGIES;
+    public static double getFruitsVeggies() { //Getter for the fruitsVeggies variable
+        return fruitsVeggies;
     }
-    public static double getOther() {
-        return OTHER;
+    public static double getOther() { //Getter for the other variable
+        return other;
     }
-    public static int getCalories() {
-        return CALORIES;
+    public static int getCalories() { //Getter for the calories variable
+        return calories;
     }
     abstract int getClientID();
 
-    private static double percentageToValue(int percentage){
+    private static double percentageToValue(int percentage){ //Method to find
 		double ratio = (double) percentage / 100;
-		return ratio * CALORIES;
+		return ratio * calories;
 	}
 }
