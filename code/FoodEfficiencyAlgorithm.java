@@ -49,7 +49,7 @@ public class FoodEfficiencyAlgorithm{
         }
         ArrayList<FoodItem> foodList = new ArrayList<>(Arrays.asList(current));
         for(int i = 0; i < foodList.size(); i++){
-            id = foodList.get(i).getID();
+            int id = foodList.get(i).getID();
             for(int j = 0; j < foodItems.size(); j++){
                 if(id == foodItems.get(j).getID()){
                     foodItems.remove(j);
