@@ -306,8 +306,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     
     //Handles a food shortage exception
     public void foodShortage(){
-        JOptionPane.showMessageDialog(this, "There is a food shortage and your hamper could not be
-                                      made, Sorry for the inconvenience. Goodbye.");
+        JOptionPane.showMessageDialog(this, "There is a food shortage and your hamper could not be made, Sorry for the inconvenience. Goodbye.");
         super.dispose();
     }
 
