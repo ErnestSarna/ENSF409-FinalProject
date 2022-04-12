@@ -48,16 +48,20 @@ public class DataBase {
 
             while(results.next()){
                 if(results.getInt("ClientID") == 1){
-                    AdultMale male = new AdultMale()
+                    AdultMale male = new AdultMale(results.getInt("WholeGrains"),results.getInt("Protein"), 
+                        results.getInt("FruitVeggies"), results.getInt("Other"), results.getInt("Calories"));
                 }
                 else if(results.getInt("ClientID") == 2){
-
+                    AdultFemale female = new AdultFemale(results.getInt("WholeGrains"),results.getInt("Protein"), 
+                        results.getInt("FruitVeggies"), results.getInt("Other"), results.getInt("Calories"));
                 }
                 else if(results.getInt("ClientID") == 3){
-                    
+                    ChildOver8 childOver8 = new ChildOver8(results.getInt("WholeGrains"),results.getInt("Protein"), 
+                        results.getInt("FruitVeggies"), results.getInt("Other"), results.getInt("Calories"));
                 }
                 else if(results.getInt("ClientID") == 4){
-
+                    ChildUnder8 childUnder8 = new ChildUnder8(results.getInt("WholeGrains"),results.getInt("Protein"), 
+                        results.getInt("FruitVeggies"), results.getInt("Other"), results.getInt("Calories"));
                 }
             }
 
