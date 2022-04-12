@@ -12,13 +12,13 @@ class FoodItem{
 	
 	//Constructor
 	public FoodItem(String name, int ID, double grains, double protein, double fruitsVeg, double other, double calories) throws IllegalArgumentException{
+		this.calories = (double) calories;
 		this.name = name;
 		this.ID = ID;
-		this.grains = grains;
-		this.protein = protein;
-		this.fruitsVeg = fruitsVeg;
-		this.other = other;
-		this.calories = calories;
+		this.grains = percentageToValue(grains);
+		this.protein = percentageToValue(protein);
+		this.fruitsVeg = percentageToValue(fruitsVeg);
+		this.other = percentageToValue(other);
 	}
 	
 	
@@ -54,8 +54,9 @@ class FoodItem{
 	
 	
 	//Converts
-	private double percentageToValue(double ratio, double total){
-		return ratio * total;
+	private double percentageToValue(int percentage){
+		double ratio = (double) percentage / 100;
+		return ratio * this.calories;
 	}
 
 }
