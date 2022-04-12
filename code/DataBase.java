@@ -7,9 +7,9 @@ public class DataBase {
     private Connection dbConnect;
     private ResultSet results;
     
-    public DataBase(){}
+    public DataBase(){} //Empty constructor
 
-    public void createConnection(){
+    public void createConnection(){ //Method for opening the database connection
         try{
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", "student", "ensf");
         }
@@ -18,13 +18,15 @@ public class DataBase {
         }
     }
 
-    public ArrayList<FoodItem> selectFoods(){
-        ArrayList<FoodItem> foodItems = new ArrayList<>();
+    public ArrayList<FoodItem> selectFoods(){ //Method for selecting all the food items from the database
+        ArrayList<FoodItem> foodItems = new ArrayList<>(); //ArrayList of FoodItem objects used to store all the entries from the database
 
         try{
             Statement myStmt = dbConnect.createStatement();
             results = myStmt.executeQuery("SELECT * FROM AVAILABLE_FOOD");
 
+            //Loops over all the entries in the table and instantiates a new FoodItem object using the values in the table.
+            //It then adds the object to the ArrayList.
             while(results.next()){
                 FoodItem item = new FoodItem(results.getString("Name"),results.getInt("ItemID"),results.getInt("GrainContent"),
                     results.getInt("ProContent"), results.getInt("FVContent"), results.getInt("Other"), results.getInt("Calories"));
@@ -38,14 +40,16 @@ public class DataBase {
             e.printStackTrace();
         }
 
-        return foodItems;
+        return foodItems; //Returns the ArrayList with all the entries from the table as FoodItem objects
     }
 
-    public void selectClientNeeds(){
+    public void selectClientNeeds(){ //Method for selecting the table of client needs from the database
         try{
             Statement myStmt = dbConnect.createStatement();
             results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS");
 
+            //Loops over the entire table and checks which entry is an AdultMale, AdultFemale, etc. It then instantiates
+            //a Client object depending on which type of client it is and sets all the required variables.
             while(results.next()){
                 if(results.getInt("ClientID") == 1){
                     AdultMale male = new AdultMale(results.getInt("WholeGrains"),results.getInt("Protein"), 
@@ -72,7 +76,7 @@ public class DataBase {
         }
     }
 
-    public void deleteItem(int itemID){
+    public void deleteItem(int itemID){ //Method for deleting entries from the database
         try{
             String query = "DELETE FROM AVAILABLE_FOOD WHERE ItemID = ?";
             PreparedStatement myStmt = dbConnect.prepareStatement(query);
@@ -87,7 +91,7 @@ public class DataBase {
     }
 
 
-    public void close(){
+    public void close(){ //Method for closing the database connection
         try{
             dbConnect.close();
             results.close();
@@ -96,5 +100,4 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-    
 }
