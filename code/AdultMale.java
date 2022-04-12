@@ -3,7 +3,7 @@ package edu.ucalgary.ensf409;
 public class AdultMale extends Client{
     private static int CLIENT_ID = 1;
 
-    public AdultMale(double grainsPercent, double proteinsPercent, double fruitsVeggiesPercent, double otherPercent, int calories){
+    public AdultFemale(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int calories){
         super(grainsPercent, proteinsPercent, fruitsVeggiesPercent, otherPercent, calories);
     }
 
