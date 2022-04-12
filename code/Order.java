@@ -12,8 +12,17 @@ class Order{
 	public Order(){}
 	
 	//Add method
-	public void add(Hamper newHamper){
+	public void add(Hamper hamper){
 		hampers.add(newHamper);
+	}
+	
+	//Clear Hampers
+	public void clearHamper(){
+		Iterator<Hamper> itr = hampers.iterator();
+		while(itr.hasNext()){
+			itr.next().emptyHamper();
+		}
+		hampers.clear();
 	}
 		
 	//Setter
