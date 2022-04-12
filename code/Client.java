@@ -7,12 +7,12 @@ abstract class Client {
     private static final double OTHER;
     private static final int CALORIES;
 
-    public Client(double grainsPercent, double proteinsPercent, double fruitsVeggiesPercent, double otherPercent, int calories){
+    public Client(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int calories){
         CALORIES = calories;
-        WHOLE_GRAINS = percentToValue(grainsPercent, CALORIES);
-        PROTEINS = percentToValue(proteinsPercent, CALORIES);
-        FRUITS_VEGGIES = percentToValue(fruitsVeggiesPercent, CALORIES);
-        OTHER = percentToValue(otherPercent, CALORIES);
+        WHOLE_GRAINS = percentageToValue(grainsPercent);
+        PROTEINS = percentageToValue(proteinsPercent);
+        FRUITS_VEGGIES = percentageToValue(fruitsVeggiesPercent);
+        OTHER = percentageToValue(otherPercent);
     }
 
     public static double getWholeGrains() {
@@ -32,7 +32,8 @@ abstract class Client {
     }
     abstract int getClientID();
 
-    private double percentToValue(double ratio, double total){
-        return total * ratio;
-    }
+    private static double percentageToValue(int percentage){
+		double ratio = (double) percentage / 100;
+		return ratio * CALORIES;
+	}
 }
