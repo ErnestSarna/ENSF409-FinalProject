@@ -28,7 +28,7 @@ public class Main {
 
                 //Fills the new hamper with fooditems
                 FoodEfficiencyAlgorithm algo = new FoodEfficiencyAlgorithm(
-                    order.getHampers().at(order.getHamperAmount() - 1));                       
+                    order.getHampers().get(order.getHamperAmount() - 1));                       
                 algo.fillHamper();
 
                 //Moves gui to the next screen
