@@ -4,21 +4,22 @@ import java.util.*;
 class Order{
 	//Member variables
 	private ArrayList<Hamper> hampers = new ArrayList<Hamper>();
-	private String name;
+	private String name = " "
 	
 	
 	
 	//Constructor
-	public Order(int hamperNumbers, Family family, String name) throws IllegalArgumentException{
-		this.name = name;
-
-		for(int i = 0; i < hamperNumbers; i++){
-			Hamper newHamper = new Hamper(family);
-			hampers.add(newHamper);
-		}
-
-	}
+	public Order(){}
 	
+	//Add method
+	public void add(Hamper hamper){
+		hampers.add(newHamper);
+	}
+		
+	//Setter
+	public void setName(String name){
+		this.name = name;
+	}
 	
 	//Getters
 	public int getHamperAmount(){
