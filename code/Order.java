@@ -17,7 +17,7 @@ class Order{
 	}
 	
 	//Clear Hampers
-	public void clearHamper(){
+	public void clear(){
 		Iterator<Hamper> itr = hampers.iterator();
 		while(itr.hasNext()){
 			itr.next().emptyHamper();
