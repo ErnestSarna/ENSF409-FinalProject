@@ -1,6 +1,6 @@
 package edu.ucalgary.ensf409;
 
-class public FoodItem{
+public class FoodItem{
 	//Member variables
 	private double grains;
 	private double protein;
