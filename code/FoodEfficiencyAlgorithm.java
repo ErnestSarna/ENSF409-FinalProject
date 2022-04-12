@@ -58,7 +58,7 @@ public class FoodEfficiencyAlgorithm{
         }
     }    
         
-    public void findCombinations(int n, int r){
+    private void findCombinations(int n, int r){
         // A temporary array to store all combination one by one
         FoodItem data[] = new FoodItem[r];
  
@@ -66,7 +66,7 @@ public class FoodEfficiencyAlgorithm{
         combinationUtil(n, r, 0, data, 0);
     }
 
-    public void combinationUtil(int n, int r, int index, FoodItem data[], int j){
+    private void combinationUtil(int n, int r, int index, FoodItem data[], int j){
         FoodItem[] temp = new FoodItem[r];
         // Current combination is ready to be printed, print it
         if (index == r){
