@@ -28,8 +28,14 @@ public class Main {
 
                 //Fills the new hamper with fooditems
                 FoodEfficiencyAlgorithm algo = new FoodEfficiencyAlgorithm(
-                    order.getHampers().get(order.getHamperAmount() - 1));                       
-                algo.fillHamper();
+                    order.getHampers().get(order.getHamperAmount() - 1)); 
+                try{
+                    algo.fillHamper();
+                }
+                catch(FoodShortageException e){
+                    gui.foodShortage();
+                    System.exit(1)
+                }
 
                 //Moves gui to the next screen
                 gui.processComplete();
