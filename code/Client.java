@@ -1,11 +1,11 @@
 package edu.ucalgary.ensf409;
 
 abstract class Client {
-    private static final double WHOLE_GRAINS;
-    private static final double PROTEINS;
-    private static final double FRUITS_VEGGIES;
-    private static final double OTHER;
-    private static final int CALORIES;
+    private static double WHOLE_GRAINS;
+    private static double PROTEINS;
+    private static double FRUITS_VEGGIES;
+    private static double OTHER;
+    private static int CALORIES;
 
     public Client(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int calories){
         CALORIES = calories;
