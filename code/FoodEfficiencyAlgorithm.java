@@ -9,7 +9,7 @@ public class FoodEfficiencyAlgorithm{
 
     private DataBase dataBase = new DataBase();
 
-    public FoodEfficiencyAlgorithm(Hamper hamper){
+    public FoodEfficiencyAlgorithm(Hamper hamper) throws IllegalArgumentException{
         this.hamper = hamper;
         this.foodItems = dataBase.selectFoods();
     }
