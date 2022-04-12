@@ -1,4 +1,4 @@
-
+package edu.ucalgary.ensf409;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
