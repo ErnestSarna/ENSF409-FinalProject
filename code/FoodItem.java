@@ -11,7 +11,7 @@ public class FoodItem{
 	private String name;
 	
 	//Constructor
-	public FoodItem(String name, int ID, double grains, double protein, double fruitsVeg, double other, double calories) throws IllegalArgumentException{
+	public FoodItem(String name, int ID, int grains, int protein, int fruitsVeg, int other, int calories) throws IllegalArgumentException{
 		this.calories = (double) calories;
 		this.name = name;
 		this.ID = ID;
