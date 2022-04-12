@@ -26,14 +26,16 @@ public class Hamper {
 	
 	//accepts foodItem to add to foodList
 	//increments each value nutrients value accordingly
-	public void addFoodItem(FoodItem foodItem) {
-		this.foodList.add(foodItem);
-		this.totalGrains += foodItem.grains;
-		this.totalProtein += foodItem.protein;
-		this.totalFV += foodItem.fruitsVeg;
-		this.totalOther += foodItem.other;
-		this.totalCalories += foodItem.calories;
-		this.items++;
+	public void addFoodItem(ArrayList<FoodItem> foodList) {
+		this.foodList = foodList;
+		this.items = foodList.size();
+		for (int i = 0; i < this.foodList.size(); i++){
+			this.totalGrains += foodList.get(i).getTotalGrains();
+			this.totalProtein += foodList.get(i).getTotalProtein();
+			this.totalFV += foodList.get(i).getTotalFruitsVeg();
+			this.totalOther += foodItem.get(i)getTotalOther();
+			this.totalCalories += foodItem.get(i).TotalCalories();
+		}
 	}
 	
 	//empties hamper if it cannot be filled
