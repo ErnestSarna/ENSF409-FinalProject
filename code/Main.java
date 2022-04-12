@@ -34,7 +34,7 @@ public class Main {
                 }
                 catch(FoodShortageException e){
                     gui.foodShortage();
-                    System.exit(1)
+                    System.exit(1);
                 }
 
                 //Moves gui to the next screen
