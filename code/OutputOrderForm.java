@@ -46,13 +46,12 @@ class OutputOrderForm{
 			String fileName = ORDER_FORM.getName() + "'s_Order.txt";
 			BufferedReader outputStream = new BufferedWriter(new FileWriter(fileName));
 			outputStream.write(orderForm);
+			outputStream.close();
 		}
 		catch(IOException e){
 			System.out.println("An IO Error Occured");
 		}
-		finally{
-			outputStream.close();
-		}
+
 
 		
 	}
