@@ -67,4 +67,17 @@ public class orderTest{
 		
 		assertEquals("getHamperAmount() did not return 2 when two hampers were added to order", 2, testOrder.getHamperAmount());
 	}
+	
+	@Test
+	public void testClearHamper(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		
+		testOrder.add(testHamper);
+		testOrder.clearHamper();
+		assertTrue("clearHamper() was called and Order contained a non-empty array list", testOrder.getHampers().isEmpty());
+	}
+		
 }
