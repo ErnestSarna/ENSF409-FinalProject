@@ -21,9 +21,13 @@ public class FoodEfficiencyAlgorithm{
         return this.foodItems;
     }
 
-    public void fillHamper(){
+    public void fillHamper() throws FoodShortageException{
         findCombinations(foodItems.size(), 1);
 
+        if(foodItems.isEmpty()){
+            throw new FoodShortageException();
+        }
+        
         FoodItem[] current = validCombinations.get(0);
         int neededCalories = (int)hamper.getFamily().getNeededCalories();
         for(int i=1;i<validCombinations.size();i++){
