@@ -4,91 +4,67 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-class OrderTest{
-	private String name = "name";
-	
-	
+public class orderTest{
+
 	@Test
-	public void testConstructorOneHamper(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily, name);
+	public void testConstructorNotNull(){
+		Order testOrder = Order();
 		assertNotNull("Order constructor did not create an object when provided a valid family one hamper", testOrder);
 	}
 	
 	@Test
-	public void testConstructorMultipleHamper(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 3);
-		Order testOrder = new Order(3, testFamily, name);
-		assertNotNull("Order constructor did not create an object when provided with a valid family and three hampers", testOrder);
-	}
-	
-	@Test
-	public void testConstructorZeroHampers(){
-		boolean correctException = false;
+	public void testSetNameAndGetName(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
+		String excpectedName = "Test";
+		testOrder.setName(expectedName);
 		
-		try{
-			int[] memberTypes = {1, 2};
-			Family testFamily = new Family(memberTypes, 0);
-			Order testOrder = new Order(0, testFamily, name);
-		}
-		catch(IllegalArgumentException e){
-			correctException = true;
-		}
+
 		
-		assertEquals("Order constructor did not throw an IllegalArgumentException when requesting zero hampers", true, correctException);
+		assertEquals("getName() did not return the name provided to setName()", expectedName, testOrder.getName());
 	}
 	
 	@Test
-	public void testConstructorBadData(){
-		boolean correctException = false;
+	public void testGetHampersReturnsValidArrayList(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
+		ArrayList<Hamper> hampList = testOrder.getHampers();
 		
-		try{
-			int[] memberTypes = {1, 2};
-			Family testFamily = new Family(memberTypes, 1);
-			Order testOrder = new Order(-1, testFamily, name);
-		}
-		catch(IllegalArgumentException e){
-			correctException = true;
-		}
+		assertNotNull("getHampers() did not return a valid array list", hampList);
+	}
+	
+	@Test
+	public void testGetHamperSizeOneHamper(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
 		
-		assertEquals("Order constructor did not throw an IllegalArgumentException when invalid hamper number was provided", true, correctException);
+		int hamperSize = testOrder.getHamperAmount();
+		assertEquals("getHamperAmount() did not return 1 when one hamper added to order", 1, hamperSize);
 	}
 	
 	@Test
-	public void testGetHamperAmountOneHamper(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily, name);
-		assertEquals("getHamperAmount did not return 1 when one hamper was specified", 1, testOrder.getHamperAmount());
-	}
-	
-	@Test
-	public void testGetHamperAmountMultipleHamper(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 3);
-		Order testOrder = new Order(3, testFamily, name);
-		assertEquals("getHamperAmount did not return 3 when three hampers were specified", 3, testOrder.getHamperAmount());
-	}
-	
-	@Test
-	public void testGetName(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily, name);
-		assertEquals("getName method did not return the correct name", name, testOrder.getName());
-	}
-	
-	@Test
-	public void testGetHampers(){
-		int[] memberTypes = {1, 2};
-		Family testFamily = new Family(memberTypes, 1);
-		Order testOrder = new Order(1, testFamily, name);
-		assertNotNull("getHampers returned a null object", testOrder.getHampers());
+	public void testAddMultipleHampersWithGetHamperSize(){
+		int[] famArray = {1, 2};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
 		
+		testOrder.add(testHamper);
+		
+		int[]famArrayTwo = {1, 3};
+		Family testFamilyTwo = new Family(famArrayTwo);
+		Hamper testHamperTwo = new Hamper(testFamilyTwo);
+		testOrder.add(testHamperTwo);
+		
+		assertEquals("getHamperAmount() did not return 2 when two hampers were added to order", 2, testOrder.getHamperAmount());
+	}
 }
-			
-	
-	
-		
