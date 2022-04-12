@@ -1,4 +1,5 @@
 package edu.ucalgary.ensf409;
+import java.util.*;
 
 public class Hamper {
 	private ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
@@ -34,14 +35,14 @@ public class Hamper {
 			this.totalGrains += foodList.get(i).getTotalGrains();
 			this.totalProtein += foodList.get(i).getTotalProtein();
 			this.totalFV += foodList.get(i).getTotalFruitsVeg();
-			this.totalOther += foodItem.get(i).getTotalOther();
-			this.totalCalories += foodItem.get(i).TotalCalories();
+			this.totalOther += foodList.get(i).getTotalOther();
+			this.totalCalories += foodList.get(i).getTotalCalories();
 		}
 	}
 	
 	//empties hamper if it cannot be filled
 	public void emptyHamper() {
-		this.foodList.removeAll();
+		this.foodList.clear();
 		this.totalGrains = 0;
 		this.totalProtein = 0;
 		this.totalFV = 0;
