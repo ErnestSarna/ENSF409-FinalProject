@@ -50,7 +50,7 @@ public class FoodEfficiencyAlgorithm{
             for(int j=0;j<current.size();j++){
                 calories1 += current.get(j).getTotalCalories();
             }
-            for(int k=0;k<current.size();k++){
+            for(int k=0;k<validCombinations.get(i).size();k++){
                 calories2 += validCombinations.get(i).get(k).getTotalCalories();
             }
             
