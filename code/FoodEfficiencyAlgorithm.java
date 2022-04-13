@@ -72,14 +72,14 @@ public class FoodEfficiencyAlgorithm{
         if (index == n){
             double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
             for(int i=0; i<curr.size(); i++){
-				fruitsVeg += curr.get(i).getTotalFruitsVeg();
-				grains += curr.get(i).getTotalGrains();
-				proteins += curr.get(i).getTotalProtein();
-				other  += curr.get(i).getTotalOther();
+		fruitsVeg += curr.get(i).getTotalFruitsVeg();
+		grains += curr.get(i).getTotalGrains();
+		proteins += curr.get(i).getTotalProtein();
+		other  += curr.get(i).getTotalOther();
             }
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
-                    validCombinations.add(data);
+                    validCombinations.add(curr);
             }
             return;
         }
@@ -90,7 +90,7 @@ public class FoodEfficiencyAlgorithm{
         // (ii) We do not consider current
         // character as part of current
         // subset
-        powerSet(index + 1, curr.add(fooditem.get(index)));
+        powerSet(index + 1, curr.add(fooditems.get(index)));
         powerSet(index + 1, curr);
      }
     
