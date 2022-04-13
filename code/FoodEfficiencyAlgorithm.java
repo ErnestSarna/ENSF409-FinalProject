@@ -144,12 +144,12 @@ public class FoodEfficiencyAlgorithm{
         powerSet(index + 1, curr);
 	curr.add(foodItems.get(index));
         powerSet(index + 1, curr);
-     }
+     } */
     //updates fooditems in the database using food id
     public void updateInventory(){
         for(int i = 0; i < hamper.getItems(); i++){
             int id = hamper.getFoodList().get(i).getID();
             dataBase.deleteItem(id);
         }
-    }  */  
+    }    
 }
