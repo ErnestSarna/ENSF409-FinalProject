@@ -97,14 +97,18 @@ public class FoodEfficiencyAlgorithm{
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
 		    System.out.println("adding array of size: " + curr.size());
-                    validCombinations.add(curr);
+		    ArrayList<FoodItem> copyOfCurr = new ArrayList<>();
+		    for(int i = 0; i < curr.size(); i++){
+			    copyOfCurr.add(curr.get(i).clone());
+		    }
+                    validCombinations.add(copyOfCurr);
             }
  
         // Try appending remaining characters
         // to current subset
         for (int i = index + 1; i < n; i++)
         {
-            curr.add(foodItems.get(i));
+            curr.add(foodItems.get(i).clone());
             powerSet(i, curr);
  
             // Once all subsets beginning with
