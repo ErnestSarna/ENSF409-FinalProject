@@ -9,15 +9,18 @@ public class FoodEfficiencyAlgorithm{
 
     private DataBase dataBase = new DataBase();
 
+    //Constructors
     public FoodEfficiencyAlgorithm(Hamper hamper) throws IllegalArgumentException{
         this.hamper = hamper;
     }
 
+    //instantiates the static fooditems list from database to be used
     public void setFoodItems(){
         dataBase.createConnection();
         this.foodItems = dataBase.selectFoods();
     }
     
+    //getters
     public Hamper getHamper() {
         return this.hamper;
     }
@@ -25,10 +28,13 @@ public class FoodEfficiencyAlgorithm{
         return this.foodItems;
     }
 
+    //chooses most efficient hamper package and fills hamper
+    //with those food items
     public void fillHamper() throws FoodShortageException{
         ArrayList<FoodItem> curr = new ArrayList<>();
         powerSet(0,curr);
 
+	//if powerset found no valid hampers throw a food shortage exception
         if(validCombinations.size() == 0){
             throw new FoodShortageException();
         }
@@ -90,7 +96,7 @@ public class FoodEfficiencyAlgorithm{
         // (ii) We do not consider current
         // character as part of current
         // subset
-        powerSet(index + 1, curr.add(fooditems.get(index)));
+        powerSet(index + 1, curr.add(foodItems.get(index)));
         powerSet(index + 1, curr);
      }
     
