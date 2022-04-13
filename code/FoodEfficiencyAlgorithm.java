@@ -55,7 +55,7 @@ public class FoodEfficiencyAlgorithm{
             
             int temp1 = calories1 - neededCalories;
             int temp2 = calories2 - neededCalories;
-            if(temp2 < temp1){
+            if(temp2 < temp1 && temp2 >=0){
                 current = validCombinations.get(i);
             }
         }
