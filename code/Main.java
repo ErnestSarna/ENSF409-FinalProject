@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args){
+        FoodEfficiencyAlgorithm set = new FoodEfficiencyAlgorithm(null);
+        set.setFoodItems();
         DataBase dataBase = new DataBase();
         dataBase.createConnection();
         dataBase.selectClientNeeds();
