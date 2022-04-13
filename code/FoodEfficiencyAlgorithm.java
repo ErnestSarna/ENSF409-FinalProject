@@ -73,6 +73,46 @@ public class FoodEfficiencyAlgorithm{
         hamper.addFoodList(foodList);
     }
     
+    public void powerSet(int index, ArrayList<FoodItem> curr)
+    {
+        int n = foodItems.size();
+ 
+        // base case
+        if (index == n)
+        {
+            return;
+        }
+ 
+        // First print current subset
+	double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
+            for(int i=0; i<curr.size(); i++){
+		fruitsVeg += curr.get(i).getTotalFruitsVeg();
+		grains += curr.get(i).getTotalGrains();
+		proteins += curr.get(i).getTotalProtein();
+		other  += curr.get(i).getTotalOther();
+            }
+            if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
+                proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
+                    validCombinations.add(curr);
+            }
+        System.out.println(curr);
+ 
+        // Try appending remaining characters
+        // to current subset
+        for (int i = index + 1; i < n; i++)
+        {
+            curr.add(foodItems.get(i));
+            powerSet(i, curr);
+ 
+            // Once all subsets beginning with
+            // initial "curr" are printed, remove
+            // last character to consider a different
+            // prefix of subsets.
+	    curr.remove(curr.size()-1);
+        }
+    }
+	
+/*
     //Finds all subsets of an array
     //Code adapted from: https://www.geeksforgeeks.org/recursive-program-to-generate-power-set/
     public void powerSet(int index, ArrayList<FoodItem> curr){
@@ -111,5 +151,5 @@ public class FoodEfficiencyAlgorithm{
             int id = hamper.getFoodList().get(i).getID();
             dataBase.deleteItem(id);
         }
-    }    
+    }  */  
 }
