@@ -29,7 +29,7 @@ public class FoodEfficiencyAlgorithm{
         ArrayList<FoodItem> curr = new ArrayList<>();
         powerSet(0,curr);
 
-        if(validCombinations.size() = 0){
+        if(validCombinations.size() == 0){
             throw new FoodShortageException();
         }
         
@@ -39,10 +39,10 @@ public class FoodEfficiencyAlgorithm{
 
             int calories1 = 0;
             int calories2 = 0;
-            for(int j=0;j<current.length;j++){
+            for(int j=0;j<current.size();j++){
                 calories1 += current.get(j).getTotalCalories();
             }
-            for(int k=0;k<current.length;k++){
+            for(int k=0;k<current.size();k++){
                 calories2 += validCombinations.get(i).get(k).getTotalCalories();
             }
             
@@ -72,10 +72,10 @@ public class FoodEfficiencyAlgorithm{
         if (index == n){
             double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
             for(int i=0; i<curr.size(); i++){
-                fruitsVeg += curr[i].getTotalFruitsVeg();
-                grains += curr[i].getTotalGrains();
-                proteins += curr[i].getTotalProtein();
-                other += curr[i].getTotalOther();
+				fruitsVeg += curr.get(i).getTotalFruitsVeg();
+				grains += curr.get(i).getTotalGrains();
+				proteins += curr.get(i).getTotalProtein();
+				other  += curr.get(i).getTotalOther();
             }
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
