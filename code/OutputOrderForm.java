@@ -101,16 +101,16 @@ class OutputOrderForm{
 			
 			while(familyIterator.hasNext()){ //Iterate through family to grab each member
 				int famMember = familyIterator.next().getClientID();
-				if(famMember == 0){
+				if(famMember == 1){
 					numMen++;
 				}
-				else if(famMember == 1){
+				else if(famMember == 2){
 					numWomen++;
 				}
-				else if(famMember == 2){
+				else if(famMember == 3){
 					numChildOverEight++;
 				}
-				else if (famMember == 3){
+				else if (famMember == 4){
 					numChildUnderEight++;
 				}
 			}
