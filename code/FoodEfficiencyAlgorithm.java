@@ -55,7 +55,7 @@ public class FoodEfficiencyAlgorithm{
             
             int temp1 = calories1 - neededCalories;
             int temp2 = calories2 - neededCalories;
-            if(temp2 < temp1 && temp2 >=0){
+            if(temp2 < temp1){
                 current = validCombinations.get(i);
             }
         }
@@ -93,6 +93,7 @@ public class FoodEfficiencyAlgorithm{
             }
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
+		    System.out.println("adding array of size: " + curr.size());
                     validCombinations.add(curr);
             }
  
