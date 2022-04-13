@@ -1,6 +1,6 @@
 package edu.ucalgary.ensf409;
 
-public class FoodItem{
+public class FoodItem implements Cloneable{
 	//Member variables
 	private double grains;
 	private double protein;
@@ -58,5 +58,10 @@ public class FoodItem{
 		double ratio = (double) percentage / 100;
 		return ratio * this.calories;
 	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
 
 }
