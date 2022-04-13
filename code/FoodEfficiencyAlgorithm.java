@@ -97,8 +97,7 @@ public class FoodEfficiencyAlgorithm{
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
 		    System.out.println("adding array of size: " + curr.size());
-		    validCombinations.add(new ArrayList<FoodItem>());
-                    validCombinations.set(validCombinations.size() - 1,curr);
+                    validCombinations.add(curr);
             }
  
         // Try appending remaining characters
