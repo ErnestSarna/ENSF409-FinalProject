@@ -11,9 +11,13 @@ public class FoodEfficiencyAlgorithm{
 
     public FoodEfficiencyAlgorithm(Hamper hamper) throws IllegalArgumentException{
         this.hamper = hamper;
-        this.foodItems = dataBase.selectFoods();
     }
 
+    public void setFoodItems(){
+        dataBase.createConnection();
+        this.foodItems = dataBase.selectFoods();
+    }
+    
     public Hamper getHamper() {
         return this.hamper;
     }
