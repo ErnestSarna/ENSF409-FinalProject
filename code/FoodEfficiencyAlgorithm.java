@@ -80,15 +80,14 @@ public class FoodEfficiencyAlgorithm{
     }
 
     private void combinationUtil(int n, int r, int index, FoodItem data[], int j){
-        FoodItem[] temp = new FoodItem[r];
         // Current combination is ready to be printed, print it
         if (index == r){
             double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
-            for(int i=0; i<temp.length; i++){
-                fruitsVeg += temp[i].getTotalFruitsVeg();
-                grains += temp[i].getTotalGrains();
-                proteins += temp[i].getTotalProtein();
-                other += temp[i].getTotalOther();
+            for(int i=0; i<data.length; i++){
+                fruitsVeg += data[i].getTotalFruitsVeg();
+                grains += data[i].getTotalGrains();
+                proteins += data[i].getTotalProtein();
+                other += data[i].getTotalOther();
             }
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
