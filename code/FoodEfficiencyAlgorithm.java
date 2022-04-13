@@ -42,6 +42,7 @@ public class FoodEfficiencyAlgorithm{
         ArrayList<FoodItem> current = validCombinations.get(0);
         int neededCalories = (int) hamper.getFamily().getNeededCalories();
 	//Finds most efficient and valid food hamper
+	if(validCombinations.size() > 1){
         for(int i=1;i<validCombinations.size();i++){
 
             int calories1 = 0;
@@ -57,8 +58,10 @@ public class FoodEfficiencyAlgorithm{
             int temp2 = calories2 - neededCalories;
             if(temp2 < temp1){
                 current = validCombinations.get(i);
+		
             }
         }
+	}
 	    
 	//deletes food items from foodlist
         for(int i = 0; i < current.size(); i++){
@@ -94,7 +97,8 @@ public class FoodEfficiencyAlgorithm{
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
 		    System.out.println("adding array of size: " + curr.size());
-                    validCombinations.add(curr);
+		    validCombinations.add(new ArrayList<FoodItem>());
+                    validCombinations.set(validCombinations.size() - 1,curr);
             }
  
         // Try appending remaining characters
