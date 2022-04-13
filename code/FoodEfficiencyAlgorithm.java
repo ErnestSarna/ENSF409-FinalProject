@@ -98,7 +98,7 @@ public class FoodEfficiencyAlgorithm{
         // subset
 	
         powerSet(index + 1, curr);
-	curr.add(foodItems.get(index))
+	curr.add(foodItems.get(index));
         powerSet(index + 1, curr);
      }
     
