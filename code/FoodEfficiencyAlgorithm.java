@@ -5,7 +5,7 @@ import java.util.*;
 public class FoodEfficiencyAlgorithm{
     private Hamper hamper;
     private static ArrayList<FoodItem> foodItems;
-    private ArrayList<FoodItem[]> validCombinations = new ArrayList<>();
+    private ArrayList<ArrayList<FoodItem>> validCombinations = new ArrayList<>();
 
     private DataBase dataBase = new DataBase();
 
@@ -26,32 +26,33 @@ public class FoodEfficiencyAlgorithm{
     }
 
     public void fillHamper() throws FoodShortageException{
-        findCombinations(foodItems.size(), 1);
+        ArrayList<FoodItem> curr = new ArrayList<>();
+        powerSet(0,curr);
 
-        if(validCombinations.isEmpty()){
+        if(validCombinations.size() = 0){
             throw new FoodShortageException();
         }
         
-        FoodItem[] current = validCombinations.get(0);
-        int neededCalories = (int)hamper.getFamily().getNeededCalories();
+        ArrayList<FoodItem> current = validCombinations.get(0);
+        int neededCalories = (int) hamper.getFamily().getNeededCalories();
         for(int i=1;i<validCombinations.size();i++){
 
             int calories1 = 0;
             int calories2 = 0;
             for(int j=0;j<current.length;j++){
-                calories1 += current[j].getTotalCalories();
+                calories1 += current.get(j).getTotalCalories();
             }
             for(int k=0;k<current.length;k++){
-                calories2 += validCombinations.get(i)[k].getTotalCalories();
+                calories2 += validCombinations.get(i).get(k).getTotalCalories();
             }
             
             int temp1 = calories1 - neededCalories;
             int temp2 = calories2 - neededCalories;
-            if(temp2 > temp1){
+            if(temp2 < temp1){
                 current = validCombinations.get(i);
             }
         }
-        ArrayList<FoodItem> foodList = new ArrayList<>(Arrays.asList(current));
+        ArrayList<FoodItem> foodList = current;
         for(int i = 0; i < foodList.size(); i++){
             int id = foodList.get(i).getID();
             for(int j = 0; j < foodItems.size(); j++){
@@ -64,13 +65,42 @@ public class FoodEfficiencyAlgorithm{
         hamper.addFoodList(foodList);
     }
     
+    public void powerSet(int index, ArrayList<FoodItem> curr){
+        int n = foodItems.size();
+ 
+        // base case
+        if (index == n){
+            double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
+            for(int i=0; i<curr.size(); i++){
+                fruitsVeg += curr[i].getTotalFruitsVeg();
+                grains += curr[i].getTotalGrains();
+                proteins += curr[i].getTotalProtein();
+                other += curr[i].getTotalOther();
+            }
+            if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
+                proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
+                    validCombinations.add(data);
+            }
+            return;
+        }
+ 
+        // Two cases for every character
+        // (i) We consider the character
+        // as part of current subset
+        // (ii) We do not consider current
+        // character as part of current
+        // subset
+        powerSet(index + 1, curr.add(fooditem.get(index)));
+        powerSet(index + 1, curr);
+     }
+    
     public void updateInventory(){
         for(int i = 0; i < hamper.getItems(); i++){
             int id = hamper.getFoodList().get(i).getID();
             dataBase.deleteItem(id);
         }
     }    
-        
+    /* 
     private void findCombinations(int n, int r){
         // A temporary array to store all combination one by one
         FoodItem data[] = new FoodItem[r];
@@ -109,5 +139,5 @@ public class FoodEfficiencyAlgorithm{
         // current is excluded, replace it with next (Note that
         // i+1 is passed, but index is not changed)
         combinationUtil(n, r, index, data, j+1);
-    }
+    } */
 }
