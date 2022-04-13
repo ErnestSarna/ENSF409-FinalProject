@@ -5,7 +5,7 @@ import java.util.*;
 public class FoodEfficiencyAlgorithm{
     private Hamper hamper;
     private static ArrayList<FoodItem> foodItems;
-    private ArrayList<FoodItem[]> validCombinations;
+    private ArrayList<FoodItem[]> validCombinations = new ArrayList<>();
 
     private DataBase dataBase = new DataBase();
 
