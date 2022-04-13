@@ -59,10 +59,10 @@ public class FoodEfficiencyAlgorithm{
                 current = validCombinations.get(i);
             }
         }
-        ArrayList<FoodItem> foodList = current;
+	    
 	//deletes food items from foodlist
-        for(int i = 0; i < foodList.size(); i++){
-            int id = foodList.get(i).getID();
+        for(int i = 0; i < current.size(); i++){
+            int id = current.get(i).getID();
             for(int j = 0; j < foodItems.size(); j++){
                 if(id == foodItems.get(j).getID()){
                     foodItems.remove(j);
@@ -70,7 +70,7 @@ public class FoodEfficiencyAlgorithm{
                 }
             }
         }
-        hamper.addFoodList(foodList);
+        hamper.addFoodList(current);
     }
     
     public void powerSet(int index, ArrayList<FoodItem> curr)
