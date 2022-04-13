@@ -32,7 +32,7 @@ public class FoodEfficiencyAlgorithm{
     //with those food items
     public void fillHamper() throws FoodShortageException{
         ArrayList<FoodItem> curr = new ArrayList<>();
-        powerSet(0,curr);
+        powerSet(-1,curr);
 
 	//if powerset found no valid hampers throw a food shortage exception
         if(validCombinations.size() == 0){
@@ -95,7 +95,6 @@ public class FoodEfficiencyAlgorithm{
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
                     validCombinations.add(curr);
             }
-        System.out.println(curr);
  
         // Try appending remaining characters
         // to current subset
