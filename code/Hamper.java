@@ -1,4 +1,18 @@
 package edu.ucalgary.ensf409;
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    1.6
+@since      1.0
+*/
+
+/*
+This class holds information about the total calories inside 
+based on the number and type of fooditems held inside
+*/
+
 import java.util.*;
 
 public class Hamper {
