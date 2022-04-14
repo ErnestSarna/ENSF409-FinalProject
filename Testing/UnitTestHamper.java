@@ -1,12 +1,13 @@
 package edu.ucalgary.ensf409;
 
+
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 
-class HamperTest{
+public class UnitTestHamper{
 
-    HamperTest(){}
+    public UnitTestHamper(){}
 
     //tests functionallity of adding a food item
     // and getting the foodlist
@@ -17,7 +18,7 @@ class HamperTest{
         foodlist.add(new FoodItem("orange", 1234, 10, 14, 35, 10, 150));
         foodlist.add(new FoodItem("orange", 1234, 10, 14, 35, 10, 150));
         foodlist.add(new FoodItem("orange", 1234, 10, 14, 35, 10, 150));
-        Family family = new Family(members, 1);
+        Family family = new Family(members);
         Hamper hamper = new Hamper(family);
 
         System.out.println("addFoodList");
@@ -26,6 +27,7 @@ class HamperTest{
         assertEquals("Food item insertion was incorrect: ", foodlist, array);
     }
 
+    //Tests that total grains is calculated properly
     @Test
     public void testGetTotalGrains(){
         int[] members = {0, 0, 0, 0};
@@ -38,13 +40,14 @@ class HamperTest{
         hamper.addFoodList(foodlist);
 
         System.out.println("getTotalGrains");
-        double expected = 150*(10/100) + 100*(13/100) + 125*(20/100);
+        double expected = 150.0*(10.0/100.0) + 100.0*(13.0/100.0) + 125.0*(20.0/100.0);
         double actual = hamper.getTotalGrains();
         assertEquals("The total grains does not match the expected value: ", expected, actual, 0.01);
     }
 
+    //tests total protein calculated properly
     @Test
-    public void testGetTotalProtien(){
+    public void testGetTotalProtein(){
         int[] members = {0, 0, 0, 0};
         ArrayList<FoodItem> foodlist = new ArrayList<>();
         foodlist.add(new FoodItem("orange", 1234, 10, 14, 35, 10, 150));
@@ -55,11 +58,12 @@ class HamperTest{
         hamper.addFoodList(foodlist);
 
         System.out.println("getTotalProtien");
-        double expected = 150*(14/100) + 100*(17/100) + 125*(10/100);
-        double actual = hamper.getTotalProtien();
+        double expected = 150.0*(14.0/100.0) + 100.0*(17.0/100.0) + 125.0*(10.0/100.0);
+        double actual = hamper.getTotalProtein();
         assertEquals("The total protien does not match the expected value: ", expected, actual, 0.01);
     }
 
+    //tests total fruits and vegs. are calculated properly
     @Test
     public void testGetTotalFV(){
         int[] members = {0, 0, 0, 0};
@@ -72,11 +76,12 @@ class HamperTest{
         hamper.addFoodList(foodlist);
 
         System.out.println("getTotalFV");
-        double expected = 150*(35/100) + 100*(54/100) + 125*(30/100);
+        double expected = 150.0*(35.0/100.0) + 100.0*(54.0/100.0) + 125.0*(30.0/100.0);
         double actual = hamper.getTotalFV();
         assertEquals("The total fruits and veggies does not match the expected value: ", expected, actual, 0.01);        
     }
 
+    //tests total calories is calulated properly
     @Test
     public void testGetTotalCalories(){
         int[] members = {0, 0, 0, 0};
@@ -94,6 +99,7 @@ class HamperTest{
         assertEquals("The total calories does not match the expected value: ", expected, actual, 0);
     }
 
+    //tests total of other is calculated properly
     @Test
     public void testGetTotalOther(){
         int[] members = {0, 0, 0, 0};
@@ -106,11 +112,12 @@ class HamperTest{
         hamper.addFoodList(foodlist);
 
         System.out.println("getTotalOther");
-        double expected = 150*(10/100) + 100*(14/100) + 125*(20/100);
+        double expected = 150.0*(10.0/100.0) + 100.0*(14.0/100.0) + 125.0*(20.0/100.0);
         double actual = hamper.getTotalOther();
         assertEquals("The total of other calories does not match the expected value: ", expected, actual, 0.01);
     }
 
+    //tests that empty hamper clears the foodlist
     @Test
     public void testEmptyHamper(){
         int[] members = {0, 0, 0, 0};
@@ -129,6 +136,7 @@ class HamperTest{
         assertEquals("The hamper did not empty the foodlist: ", expected, actual);
     }
 
+    //tests getter for family variable
     @Test
     public void testGetFamily(){
         int[] members = {0, 0, 0, 0};
@@ -172,7 +180,7 @@ class HamperTest{
         double actual = hamper.getTotalGrains();
         double expected = 0;
         assertEquals("Total grains does not match expected value: ", expected, actual, 0);
-        actual = hamper.getTotalProtien();
+        actual = hamper.getTotalProtein();
         assertEquals("Total protien does not match expected value: ", expected, actual, 0);
         actual = hamper.getTotalFV();
         assertEquals("Total fruits and veggies does not match expected value: ", expected, actual, 0);
@@ -186,7 +194,7 @@ class HamperTest{
         ArrayList<FoodItem> expected2 = new ArrayList<FoodItem>();
         assertEquals("Foodlist does not match expected list: ", expected2, actual2);
         Family actual3 = hamper.getFamily();
-        Famliy expected3 = family;
+        Family expected3 = family;
         assertEquals("The family does not match expected one: ", expected3, actual3);
     }
 
@@ -196,14 +204,15 @@ class HamperTest{
     public void testConstructorInvalidArgument(){
         boolean exceptionThrown;
         try{
-            int family = 3;
-            Hamper hamper = new Hamper(family);
+            int[] client = {1};
+            Hamper hamper = new Hamper(new Family(client));
             exceptionThrown = false;
         }
         catch(IllegalArgumentException e){
             exceptionThrown = true;
         }
-        AssertEquals("The exception was not thrown when given invalid arguments: ", true, exceptionThrown);
+        assertEquals("The exception was not thrown when given invalid arguments: ", true, exceptionThrown);
     }
 
 }
+
