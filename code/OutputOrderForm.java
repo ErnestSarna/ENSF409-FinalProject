@@ -15,16 +15,16 @@ class OutputOrderForm{
 	//Method to return a string of order form
 	public String checkOrderForm(){ 
 
-		String orderForm = "Example Food Bank \n" +
-			"Hamper Order Form \n" +
+		String orderForm = "<html>Example Food Bank <br>" +
+			"Hamper Order Form <br>" +
+			"<br>" +
+			"Name: " + ORDER_FORM.getName() + "<br>" + 
+			"Date: " + LocalDate.now().toString() + "<br>" +
 			"\n" +
-			"Name: " + ORDER_FORM.getName() + "\n" + 
-			"Date: " + LocalDate.now().toString() + "\n" +
-			"\n" +
-			"Original Request: \n" +
-			originalRequest() + "\n" + 
-			"\n" + 
-			hamperItems() + "\n";
+			"Original Request: <br>" +
+			originalRequest() + "<br>" + 
+			"<br>" + 
+			hamperItems() + "<html>";
 
 		return orderForm;			
 	}
