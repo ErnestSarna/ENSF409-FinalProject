@@ -9,6 +9,7 @@ public class Main {
         DataBase dataBase = new DataBase();
         dataBase.createConnection();
         dataBase.selectClientNeeds();
+        dataBase.close();
         Order order = new Order();
         GUI gui = new GUI();
         gui.setVisible(true);
