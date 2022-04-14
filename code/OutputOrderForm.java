@@ -20,7 +20,7 @@ class OutputOrderForm{
 			"<br>" +
 			"Name: " + ORDER_FORM.getName() + "<br>" + 
 			"Date: " + LocalDate.now().toString() + "<br>" +
-			"\n" +
+			"<br>" +
 			"Original Request: <br>" +
 			originalRequest() + "<br>" + 
 			"<br>" + 
