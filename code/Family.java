@@ -65,7 +65,7 @@ public class Family {
 		//go through familyMembers and increment totals
 		for (int i = 0; i < familyMembers.size(); i++) {
 			this.neededGrains += familyMembers.get(i).getWholeGrains();
-			this.neededProtein += familyMembers.get(i).getProtiens();
+			this.neededProtein += familyMembers.get(i).getProteins();
 			this.neededFV += familyMembers.get(i).getFruitsVeggies();
 			this.neededOther += familyMembers.get(i).getOther();
 			this.neededCalories += familyMembers.get(i).getCalories();
