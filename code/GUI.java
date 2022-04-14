@@ -2,7 +2,7 @@
 @author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
 @author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
 @author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
-@auhor      Aaron Frerichs <a href="">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
 
 @version    2.1.2
 @since      1.0
