@@ -109,7 +109,6 @@ public class DataBase {
     public void close(){ //Method for closing the database connection
         try{
             dbConnect.close();
-            results.close();
         }
         catch(SQLException e){
             e.printStackTrace();
