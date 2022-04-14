@@ -9,6 +9,9 @@ class OutputOrderForm{
 	
 	//Constructor
 	public OutputOrderForm(Order info) throws IllegalArgumentException{
+		if(info == null){
+			throw new IllegalArgumentException();
+		}
 		this.ORDER_FORM = info;
 	}
 	
@@ -58,7 +61,7 @@ class OutputOrderForm{
 	
 	//Helper methods for creating order form string
 	
-	public String hamperItemsPrint(){ 
+	private String hamperItemsPrint(){ 
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
 		StringBuilder itemBuilder = new StringBuilder(); //Probably need to set a really large size, leaving it default for now
@@ -84,7 +87,7 @@ class OutputOrderForm{
 	}
 	
 	
-	public String hamperItemsString(){ 
+	private String hamperItemsString(){ 
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
 		StringBuilder itemBuilder = new StringBuilder(); //Probably need to set a really large size, leaving it default for now
@@ -109,7 +112,7 @@ class OutputOrderForm{
 		return itemBuilder.toString();
 	}
 	
-	public String originalRequestPrint(){	
+	private String originalRequestPrint(){	
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
 		StringBuilder requestBuilder = new StringBuilder(); //Set size?
@@ -192,7 +195,7 @@ class OutputOrderForm{
 		return requestBuilder.toString();
 	}
 	
-	public String originalRequestString(){	
+	private String originalRequestString(){	
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
 		StringBuilder requestBuilder = new StringBuilder(); //Set size?
