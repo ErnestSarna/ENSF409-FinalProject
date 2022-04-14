@@ -1,9 +1,22 @@
+/**
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+
+@version    1.3
+@since      1.0
+*/
+
+
+/*
+Class which describes a family, used to determine caloric needs for food bank order
+*/
+
 package edu.ucalgary.ensf409;
 
 import java.util.*;
-/**
-Class which describes a family, used to determine caloric needs for order
-**/
+
 public class Family {
 	//Information about family and its needs
 	private ArrayList<Client> familyMembers = new ArrayList<Client>();
