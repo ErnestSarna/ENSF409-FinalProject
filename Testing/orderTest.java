@@ -3,23 +3,25 @@ package edu.ucalgary.ensf409;
 import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
+import java.util.*;
+
 
 public class orderTest{
 
 	@Test
 	public void testConstructorNotNull(){
-		Order testOrder = Order();
+		Order testOrder = new Order();
 		assertNotNull("Order constructor did not create an object when provided a valid family one hamper", testOrder);
 	}
 	
 	@Test
 	public void testSetNameAndGetName(){
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
 		testOrder.add(testHamper);
-		String excpectedName = "Test";
+		String expectedName = "Test";
 		testOrder.setName(expectedName);
 		
 
@@ -29,7 +31,7 @@ public class orderTest{
 	
 	@Test
 	public void testGetHampersReturnsValidArrayList(){
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
@@ -41,7 +43,7 @@ public class orderTest{
 	
 	@Test
 	public void testGetHamperSizeOneHamper(){
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
@@ -53,30 +55,30 @@ public class orderTest{
 	
 	@Test
 	public void testAddMultipleHampersWithGetHamperSize(){
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
 		
 		testOrder.add(testHamper);
 		
-		int[]famArrayTwo = {1, 3};
+		int[]famArrayTwo = {1, 1, 0, 0};
 		Family testFamilyTwo = new Family(famArrayTwo);
 		Hamper testHamperTwo = new Hamper(testFamilyTwo);
 		testOrder.add(testHamperTwo);
 		
-		assertEquals("getHamperAmount() did not return 2 when two hampers were added to order", 2, testOrder.getHamperAmount());
+		assertEquals("getHamperAmount() returned " + testOrder.getHamperAmount() + " when two hampers were added to order", 2, testOrder.getHamperAmount());
 	}
 	
 	@Test
-	public void testClearHamper(){
-		int[] famArray = {1, 2};
+	public void testClear(){
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
 		
 		testOrder.add(testHamper);
-		testOrder.clearHamper();
+		testOrder.clear();
 		assertTrue("clearHamper() was called and Order contained a non-empty array list", testOrder.getHampers().isEmpty());
 	}
 		
