@@ -1,26 +1,42 @@
 package edu.ucalgary.ensf409;
 
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    1.3
+@since      1.0
+*/
+
+/*
+Test class for the Client class and all its subclasses.
+*/
+
 import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
 public class ClientTest{
-    Client client = new AdultMale(100,120,140,160,180);
+    AdultMale male = new AdultMale(16,28,26,30,2500);
+    AdultFemale female = new AdultFemale(16, 28, 26, 30, 2000);
+    ChildOver8 childOver = new ChildOver8(21, 33, 31, 15, 2200);
+    ChildUnder8 childUnder = new ChildUnder8(21, 33, 31, 15, 1400);
 
     //Tests the client constructor with good data to check if it gets created properly
     @Test
     public void testClientConstructorGoodData(){
-        Client client = new AdultMale(197,200,155,142,102);
+        Client client = new AdultMale(16,28,26,30,2500);
         assertNotNull("Client constructor did not create an object when given a valid set of data.", client);
     }
 
-    //Tests the client constructor with not enough data provided to check if it throws an IllegalArgumentExcpetion correctly
+    //Tests the client constructor with invalid data to check if it throws an IllegalArgumentExcpetion correctly
     @Test
     public void testClientConstructorInvalidData(){
         boolean correctException = false;
 
         try{
-            Client client = new AdultMale(120,145,68,204);
+            Client client = new AdultMale(-16,-28,-26,-30,-2500);
         }
         catch(IllegalArgumentException e){
             correctException = true;
@@ -29,74 +45,74 @@ public class ClientTest{
         assertEquals("Client constructor did not throw an IllegalArgumentException when given invalid data.", true, correctException);
     }
 
-    //Test the getter for WHOLE_GRAINS within Client
+    //Test the getter for wholeGrains
     @Test
     public void testGetWholeGrains(){
-        int foundWholeGrains = client.getWholeGrains();
-        int expectedWholeGrains = 100;
-        assertEquals("Method getWholeGrains did not return the expected result: ", expectedWholeGrains, foundWholeGrains);
+        double foundWholeGrains = male.getWholeGrains();
+        double expectedWholeGrains = 400.0;
+        assertEquals("Method getWholeGrains did not return the expected result: ",expectedWholeGrains, foundWholeGrains, 0);
     }
 
-    //Test the getter for PROTEINS within Client
+    //Test the getter for proteins
     @Test
     public void testGetProteins(){
-        int foundProteins = client.getProteins();
-        int expectedProteins = 120;
-        assertEquals("Method getProteins did not return the expected result: ", expectedProteins, foundProteins);
+        double foundProteins = female.getProteins();
+        double expectedProteins = 560.0;
+        assertEquals("Method getProteins did not return the expected result: ", expectedProteins, foundProteins, 0);
     }
 
-    //Test the getter for FRUITS_VEGGIES within Client
+    //Test the getter for fruitsVeggies
     @Test
     public void testGetFruitsVeggies(){
-        int foundFV = client.getFruitsVeggies();
-        int expectedFV = 140;
-        assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedFV, foundFV);
+        double foundFV = childOver.getFruitsVeggies();
+        double expectedFV = 682.0;
+        assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedFV, foundFV,0);
     }
 
-    //Test the getter for OTHER within Client
+    //Test the getter for other
     @Test
     public void testGetOther(){
-        int foundOther = client.getOther();
-        int expectedOther = 160;
-        assertEquals("Method getOther did not return the expected result: ", expectedOther, foundOther);
+        double foundOther = childUnder.getOther();
+        double expectedOther = 210.0;
+        assertEquals("Method getOther did not return the expected result: ", expectedOther, foundOther,0);
     }
 
-    //Test the getter for CALORIES within Client
+    //Test the getter for calories
     @Test
     public void testGetCalories(){
-        int foundCalories = client.getCalories();
-        int expectedCalories = 180;
+        int foundCalories = male.getCalories();
+        int expectedCalories = 2500;
         assertEquals("Method getCalories did not return the expected result: ", expectedCalories, foundCalories);
     }
 
-    //Test the getter for CLIENTID within AdultMale
+    //Test the getter for CLIENT_ID within AdultMale
     @Test
     public void testGetClientIDAdultMale(){
-        int foundID = AdultMale.getClientID();
+        int foundID = male.getClientID();
         int expectedID = 1;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
 
-    //Test the getter for CLIENTID within AdultFemale
+    //Test the getter for CLIENT_ID within AdultFemale
     @Test
     public void testGetClientIDAdultFemale(){
-        int foundID = AdultFemale.getClientID();
+        int foundID = female.getClientID();
         int expectedID = 2;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
 
-    //Test the getter for CLIENTID within ChildOver8
+    //Test the getter for CLIENT_ID within ChildOver8
     @Test
     public void testGetClientIDChildOver8(){
-        int foundID = ChildOver8.getClientID();
+        int foundID = childOver.getClientID();
         int expectedID = 3;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
 
-    //Test the getter for CLIENTID within ChildUnder8
+    //Test the getter for CLIENT_ID within ChildUnder8
     @Test
     public void testGetClientIDChildUnder8(){
-        int foundID = ChildUnder8.getClientID();
+        int foundID = childUnder.getClientID();
         int expectedID = 4;
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
