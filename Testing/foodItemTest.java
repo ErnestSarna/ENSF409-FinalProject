@@ -6,6 +6,10 @@
 @version    1.1.4
 @since      1.0
 */
+
+/*
+This Program tests the functionality of the FoodItem class.
+*/
 package edu.ucalgary.ensf409;
 
 import org.junit.Test;
@@ -23,13 +27,15 @@ public class foodItemTest{
 	public int calories = 30;
 	public int invalid = -1;
 	
-	
+	//Tests the constructor with good data
 	@Test
 	public void testConstructorGoodData(){
 		
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
 		assertNotNull("FoodItem constructor did not create an object when valid data was input", testFoodItem);
 	}
+	
+	//Tests the constructor with various bad inputs
 	
 	@Test
 	public void testConstructorBadName(){
@@ -130,6 +136,8 @@ public class foodItemTest{
 		assertEquals("FoodItem Constructor did not throw an IllegalArgumentException when invalid calories was provided", true, correctException);
 	}
 	
+	//Tests all the getters for the FoodItem class
+	
 	@Test
 	public void testGetName(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
@@ -175,16 +183,5 @@ public class foodItemTest{
 	public void testGetTotalCalories(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
 		assertEquals("getTotalCalories did not return expected value.", testFoodItem.getTotalCalories(), calories, 0.01);
-	}
-	
-		
-		
-	
-}
-	
-	
-	
-	
-	
-	
-		
+	}	
+}		
