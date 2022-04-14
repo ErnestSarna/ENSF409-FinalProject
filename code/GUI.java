@@ -58,7 +58,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
 
     GUI(){
         setupGUI();
-        setSize(500, 400);
+        setSize(500, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
