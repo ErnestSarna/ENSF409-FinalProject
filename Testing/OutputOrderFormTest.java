@@ -6,6 +6,10 @@
 @version    1.2.3
 @since      1.0
 */
+
+/*
+This Program tests the functionality of the OutputOrderForm class.
+*/
 package edu.ucalgary.ensf409;
 
 import org.junit.Test;
