@@ -20,6 +20,7 @@ import java.io.*;
 public class OutputOrderFormTest{
 	
 	
+	//Tests constructor produces valid object when given valid data
 	@Test
 	public void testConstructorGoodData(){
 		
@@ -36,6 +37,7 @@ public class OutputOrderFormTest{
 		assertNotNull("OutputOrderForm constructor did not create an object when valid data was input", testForm);
 	}
 	
+	//Test that file gets made when printForm is called
 	@Test
 	public void testPrintFormCreatesFile(){
 		int[] famArray = {1, 0, 0, 1};
@@ -53,7 +55,7 @@ public class OutputOrderFormTest{
 		assertTrue("printForm did not successfully create a file.", testFile.exists());
 	}
 	
-	
+	//Tests that IllegalArgumentException si thrown when a null Order is passed in to constructor
 	@Test
 	public void testConstructorBadData(){
 
@@ -69,6 +71,7 @@ public class OutputOrderFormTest{
 		}
 		
 	
+	//Tests that checkOrderForm returns a valid string
 	@Test
 	public void testcheckOrderFormReturnsValidString(){
 		int[] famArray = {1, 0, 0, 1};
