@@ -3,6 +3,7 @@ package edu.ucalgary.ensf409;
 import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
+import java.io.*;
 
 public class outputOrderFormTest{
 	
@@ -10,7 +11,7 @@ public class outputOrderFormTest{
 	@Test
 	public void testConstructorGoodData(){
 		
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
@@ -25,25 +26,19 @@ public class outputOrderFormTest{
 	
 	@Test
 	public void testPrintFormCreatesFile(){
-		boolean noException = true;
+		int[] famArray = {1, 0, 0, 1};
+		Family testFamily = new Family(famArray);
+		Hamper testHamper = new Hamper(testFamily);
+		Order testOrder = new Order();
+		testOrder.add(testHamper);
+		testOrder.setName("TestName");
 		
-		try{
-			int[] famArray = {1, 2};
-			Family testFamily = new Family(famArray);
-			Hamper testHamper = new Hamper(testFamily);
-			Order testOrder = new Order();
-			testOrder.add(testHamper);
-			testOrder.setName("Test Name");
+		OutputOrderForm testForm = new OutputOrderForm(testOrder);
+		testForm.printForm();
 		
-		
-			OutputOrderForm testForm = new OutputOrderForm(testOrder);
-			
-			testForm.printForm();
-		}
-		catch(IOException e){
-			noException = false;
-		}	
-		assertEquals("printForm did not successfully create a file.", true, noException);
+		File testFile = new File("TestName's_Order.txt");
+
+		assertTrue("printForm did not successfully create a file.", testFile.exists());
 	}
 	
 	
@@ -58,14 +53,13 @@ public class outputOrderFormTest{
 			correctException = true;
 		}
 		
-		assertEquals("OutputOrderForm constructor did not throw an IllegalArgumentException when a null was used in constructor.", true, correctException);
+		assertTrue("OutputOrderForm constructor did not throw an IllegalArgumentException when a null was used in constructor.", correctException);
 		}
 		
-}
 	
 	@Test
 	public void testcheckOrderFormReturnsValidString(){
-		int[] famArray = {1, 2};
+		int[] famArray = {1, 0, 0, 1};
 		Family testFamily = new Family(famArray);
 		Hamper testHamper = new Hamper(testFamily);
 		Order testOrder = new Order();
@@ -77,6 +71,7 @@ public class outputOrderFormTest{
 			
 		assertNotNull("checkOrderForm returned a null string", testForm.checkOrderForm());
 	}
+	
 		
 }
 	
