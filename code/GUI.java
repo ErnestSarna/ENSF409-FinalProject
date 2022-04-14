@@ -243,6 +243,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             JOptionPane.showMessageDialog(this, "Your order has been cleared, please try again.\nSorry for the inconvenience.");
             clearOrder = true;
             confirmScreen = false;
+            addAnother = true;
             cardLayout.show(deck, "Start");
         }
 
