@@ -154,6 +154,7 @@ public class FoodEfficiencyAlgorithm{
      } */
     //updates fooditems in the database using food id
     public void updateInventory(){
+	    dataBase.createConnection();
         for(int i = 0; i < hamper.getItems(); i++){
             int id = hamper.getFoodList().get(i).getID();
             dataBase.deleteItem(id);
