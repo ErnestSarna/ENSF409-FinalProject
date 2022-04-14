@@ -32,6 +32,7 @@ public class FoodEfficiencyAlgorithm{
     public void setFoodItems(){
         dataBase.createConnection();
         this.foodItems = dataBase.selectFoods();
+	dataBase.close();
     }
     
     //getters
@@ -143,5 +144,6 @@ public class FoodEfficiencyAlgorithm{
             int id = hamper.getFoodList().get(i).getID();
             dataBase.deleteItem(id);
         }
+	dataBase.close();
     }    
 }
