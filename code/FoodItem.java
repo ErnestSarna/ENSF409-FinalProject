@@ -12,6 +12,13 @@ public class FoodItem implements Cloneable{
 	
 	//Constructor
 	public FoodItem(String name, int ID, int grains, int protein, int fruitsVeg, int other, int calories) throws IllegalArgumentException{
+		if(ID < 0 || grains < 0 || protein < 0 || fruitsVeg < 0 || other < 0 || calories < 0){
+			throw new IllegalArgumentException();
+		}
+		
+		
+		
+		
 		this.calories = (double) calories;
 		this.name = name;
 		this.ID = ID;
