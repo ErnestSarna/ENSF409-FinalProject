@@ -1,3 +1,17 @@
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    1.8.2
+@since      1.0
+*/
+
+/*
+This program prompts runs the whole food bank user interface from the start of
+order to the end when an order form is printed.
+*/
+
 package edu.ucalgary.ensf409;
 
 import java.util.ArrayList;
@@ -6,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args){
+        //Initialization of variables
         DataBase dataBase = new DataBase();
         dataBase.createConnection();
         dataBase.selectClientNeeds();
@@ -17,7 +32,7 @@ public class Main {
         while(true){
             FoodEfficiencyAlgorithm set = new FoodEfficiencyAlgorithm(null);
             set.setFoodItems();
-            //While user is still adding hampers
+            //Loops until user is done adding hampers
             while(gui.getAddAnother()){
                 //Waits for user to choose hamper details
                 while(gui.getWaiting()){
@@ -26,13 +41,14 @@ public class Main {
                     }
                     catch(Exception e){}
                 }
-
                 int[] clients = gui.getClients();
+                //adds another hamper to the order
                 order.add(new Hamper(new Family(clients)));   
 
                 //Fills the new hamper with fooditems
                 FoodEfficiencyAlgorithm algo = new FoodEfficiencyAlgorithm(
                     order.getHampers().get(order.getHamperAmount() - 1)); 
+                //Checks for a foodshortage exception
                 try{
                     algo.fillHamper();
                 }
