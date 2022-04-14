@@ -60,8 +60,15 @@ public class FoodItem implements Cloneable{
 	}
 	
 	@Override
-	public Object clone() throws CloneNotSupportedException{
-        return super.clone();
+	public FoodItem clone(){
+		try{
+			return (FoodItem)super.clone();
+		}
+		catch(CloneNotSupportedException e){
+			System.out.println("Clone failed");
+			return null;
+		}
+			
     }
 
 }
