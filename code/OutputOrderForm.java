@@ -6,6 +6,11 @@
 @version    2.1.0
 @since      1.0
 */
+/*
+This class uses the order object in order to either output the order form to the GUI or
+to print a text file containing the order form
+*/
+
 package edu.ucalgary.ensf409;
 import java.time.LocalDate;
 import java.io.*;
@@ -23,7 +28,7 @@ public class OutputOrderForm{
 		this.ORDER_FORM = info;
 	}
 	
-	//Method to return a string of order form
+	//Method to return the order form as a string
 	public String checkOrderForm(){ 
 
 		String orderForm = "<html>Example Food Bank <br>" +
@@ -40,7 +45,7 @@ public class OutputOrderForm{
 		return orderForm;			
 	}
 	
-	//Method to print a file containing the order form string
+	//Method to print a file containing the order form 
 	public void printForm(){
 		String orderForm = "Example Food Bank \n" +
 			"Hamper Order Form \n" +
@@ -69,19 +74,22 @@ public class OutputOrderForm{
 	
 	//Helper methods for creating order form string
 	
+	
+	//Generates a string containing each hamper with all of its associated food items and IDs
+	//Uses \n for new line for format in text files
 	private String hamperItemsPrint(){ 
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
-		StringBuilder itemBuilder = new StringBuilder(); //Probably need to set a really large size, leaving it default for now
+		StringBuilder itemBuilder = new StringBuilder(); 
 		
 		int hamperNum = 1;
-		while(iter.hasNext()){//Iterate through Order to grab each hamper
+		while(iter.hasNext()){ //Iterate through Order to grab each hamper
 			ArrayList<FoodItem> foodList = iter.next().getFoodList();
 			Iterator<FoodItem> foodIter = foodList.iterator();
-			StringBuilder itemList = new StringBuilder(); //Size?
+			StringBuilder itemList = new StringBuilder(); 
 			
 			
-			while(foodIter.hasNext()){ //Iterate through food list
+			while(foodIter.hasNext()){ //Iterate through food list to grab each item
 				FoodItem currentItem = foodIter.next();
 				itemList.append(currentItem.getID() + "		" + currentItem.getName() + "\n");
 			}	
@@ -94,11 +102,12 @@ public class OutputOrderForm{
 		return itemBuilder.toString();
 	}
 	
-	
+	//Generates a string containing each hamper with all of its associated food items and IDs
+	//Uses <br> for new line for format in GUI
 	private String hamperItemsString(){ 
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
-		StringBuilder itemBuilder = new StringBuilder(); //Probably need to set a really large size, leaving it default for now
+		StringBuilder itemBuilder = new StringBuilder(); 
 		
 		int hamperNum = 1;
 		while(iter.hasNext()){//Iterate through Order to grab each hamper
@@ -120,17 +129,19 @@ public class OutputOrderForm{
 		return itemBuilder.toString();
 	}
 	
+	//Generates a string which contains each hamper with the associated family member types
+	//Uses \n for next line for formatting in a text file
 	private String originalRequestPrint(){	
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
-		StringBuilder requestBuilder = new StringBuilder(); //Set size?
+		StringBuilder requestBuilder = new StringBuilder(); 
 		
 		int hamperNum = 1;
 		while(iter.hasNext()){	//Iterate through Order to grab each hamper
 			ArrayList<Client> familyList = iter.next().getFamily().getFamilyMembers();
 			Iterator<Client> familyIterator = familyList.iterator();
 			
-			StringBuilder familyGetter = new StringBuilder(); //Set size?
+			StringBuilder familyGetter = new StringBuilder(); 
 			
 			int numMen = 0;
 			int numWomen = 0;
@@ -159,7 +170,7 @@ public class OutputOrderForm{
 				else{
 					familyGetter.append(numMen + " Adult Males");
 				}
-				if(numWomen != 0 || numChildOverEight != 0 || numChildUnderEight != 0){
+				if(numWomen != 0 || numChildOverEight != 0 || numChildUnderEight != 0){ //Append comma if needed
 					familyGetter.append(", ");
 				}
 			}
@@ -203,17 +214,19 @@ public class OutputOrderForm{
 		return requestBuilder.toString();
 	}
 	
+	//Generates a string which contains each hamper with the associated family member types
+	//Uses <br> for next line for formatting in a text file
 	private String originalRequestString(){	
 		ArrayList<Hamper> hampers = ORDER_FORM.getHampers();
 		Iterator<Hamper> iter = hampers.iterator();
-		StringBuilder requestBuilder = new StringBuilder(); //Set size?
+		StringBuilder requestBuilder = new StringBuilder(); 
 		
 		int hamperNum = 1;
 		while(iter.hasNext()){	//Iterate through Order to grab each hamper
 			ArrayList<Client> familyList = iter.next().getFamily().getFamilyMembers();
 			Iterator<Client> familyIterator = familyList.iterator();
 			
-			StringBuilder familyGetter = new StringBuilder(); //Set size?
+			StringBuilder familyGetter = new StringBuilder(); 
 			
 			int numMen = 0;
 			int numWomen = 0;
