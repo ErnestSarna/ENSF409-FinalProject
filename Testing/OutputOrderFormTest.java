@@ -17,7 +17,7 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 import java.io.*;
 
-public class outputOrderFormTest{
+public class OutputOrderFormTest{
 	
 	
 	@Test
