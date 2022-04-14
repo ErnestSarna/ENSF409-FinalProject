@@ -2,17 +2,17 @@ package edu.ucalgary.ensf409;
 
 abstract class Client {
     private static double wholeGrains;
-    private static double protiens;
+    private static double proteins;
     private static double fruitsVeggies;
     private static double other;
     private static int calories;
 
     //Constructor for the client class that sets all the variables, it uses the percentageToValue method to convert the different food group
     //percentages into actual numbers using the total amount of calories
-    public Client(int grainsPercent, int protiensPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories) throws IllegalArgumentException{
+    public Client(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories) throws IllegalArgumentException{
         calories = totalCalories;
         wholeGrains = percentageToValue(grainsPercent);
-        protiens = percentageToValue(protiensPercent);
+        proteins = percentageToValue(proteinsPercent);
         fruitsVeggies = percentageToValue(fruitsVeggiesPercent);
         other = percentageToValue(otherPercent);
     }
@@ -22,8 +22,8 @@ abstract class Client {
     public static double getWholeGrains() { //Getter for the wholeGrains variable
         return wholeGrains;
     }
-    public static double getProtiens() { //Getter for the proteins variable
-        return protiens;
+    public static double getProteins() { //Getter for the proteins variable
+        return proteins;
     }
     public static double getFruitsVeggies() { //Getter for the fruitsVeggies variable
         return fruitsVeggies;
