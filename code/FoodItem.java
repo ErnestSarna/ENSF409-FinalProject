@@ -6,6 +6,10 @@
 @version    1.2.1
 @since      1.0
 */
+
+/*
+This class holds all the information about a food item from the database.
+*/
 package edu.ucalgary.ensf409;
 
 public class FoodItem implements Cloneable{
@@ -23,9 +27,6 @@ public class FoodItem implements Cloneable{
 		if(ID < 0 || grains < 0 || protein < 0 || fruitsVeg < 0 || other < 0 || calories < 0){
 			throw new IllegalArgumentException();
 		}
-		
-		
-		
 		
 		this.calories = (double) calories;
 		this.name = name;
@@ -68,12 +69,13 @@ public class FoodItem implements Cloneable{
 	
 	
 	
-	//Converts
+	//Method to find a certain percentage from a total value
 	private double percentageToValue(int percentage){
 		double ratio = (double) percentage / 100;
 		return ratio * this.calories;
 	}
 	
+	//Cloning method for making a deep copy of a FoodItem object
 	@Override
 	public FoodItem clone(){
 		try{
