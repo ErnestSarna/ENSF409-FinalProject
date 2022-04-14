@@ -230,7 +230,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
             for(int i = 0; i < clients.length; i++){
                 if(clients[i] == 0){ counter++;}
             }
-            if(counter == clients.length;){
+            if(counter == clients.length){
                 JOptionPane.showMessageDialog(this, "Error: Cannot process an order with no people.");
                 error = true;
             }
@@ -447,7 +447,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                 for(int i = 0; i < clients.length; i++){
                     if(clients[i] == 0){ counter++;}
                 }
-                if(counter == clients.length;){
+                if(counter == clients.length){
                     JOptionPane.showMessageDialog(this, "Error: Cannot process an order with no people.");
                     error = true;
                 }
