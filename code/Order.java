@@ -7,11 +7,18 @@
 @since      1.0
 */
 
+/*
+The order class holds the name for the order made throughout the program and
+holds an array list containing each hamper which is filled. It is also able to
+clear all hampers within the array list.
+*/
+
+
 
 package edu.ucalgary.ensf409;
 import java.util.*;
 
-class Order{
+public class Order{
 	//Member variables
 	private ArrayList<Hamper> hampers = new ArrayList<Hamper>();
 	private String name = " ";
@@ -26,7 +33,7 @@ class Order{
 		hampers.add(newHamper);
 	}
 	
-	//Clear Hampers
+	//Empties hampers within hampers Array List and clear the array list
 	public void clear(){
 		Iterator<Hamper> itr = hampers.iterator();
 		while(itr.hasNext()){
