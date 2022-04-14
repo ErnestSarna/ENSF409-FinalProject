@@ -1,3 +1,17 @@
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    1.4
+@since      1.0
+*/
+
+/*
+This Program connects to a database containing information about a food 
+bank and retrieves data to be used elsewhere from it.
+*/
+
 package edu.ucalgary.ensf409;
 
 import java.sql.*;
