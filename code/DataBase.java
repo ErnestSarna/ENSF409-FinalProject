@@ -96,7 +96,7 @@ public class DataBase {
             PreparedStatement myStmt = dbConnect.prepareStatement(query);
 
             myStmt.setInt(1,itemID);
-            myStmt.executeQuery();
+            myStmt.execute();
 
             myStmt.close();
         }
