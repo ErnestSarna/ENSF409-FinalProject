@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.io.*;
 import java.util.*;
 
-class OutputOrderForm{
+public class OutputOrderForm{
 	//Member variable
 	private final Order ORDER_FORM;
 	
