@@ -260,6 +260,7 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
     // is correct
     private int validateInput(String input){
         input = input.replaceAll("\\s", "");
+        if(input.equals("")){return -1;}
         for(int i = 0; i < input.length(); i++){
             if((int) input.charAt(i) < 48 || (int) input.charAt(i) > 57){
                 return -1;
