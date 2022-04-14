@@ -1,45 +1,33 @@
 package edu.ucalgary.ensf409;
 
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="">
+@author     Ernest Sarna   <a href="ernest.sarna@ucalgary.ca">
+@auhor      Aaron Frerichs <a href="">
+@version    1.6
+@since      1.0
+*/
+
+/*
+This class acts as the super class for all the individual client types.
+*/
+
 abstract class Client {
-    private static double wholeGrains;
-    private static double proteins;
-    private static double fruitsVeggies;
-    private static double other;
-    private static int calories;
 
-    //Constructor for the client class that sets all the variables, it uses the percentageToValue method to convert the different food group
-    //percentages into actual numbers using the total amount of calories
-    public Client(int grainsPercent, int proteinsPercent, int fruitsVeggiesPercent, int otherPercent, int totalCalories) throws IllegalArgumentException{
-        calories = totalCalories;
-        wholeGrains = percentageToValue(grainsPercent);
-        proteins = percentageToValue(proteinsPercent);
-        fruitsVeggies = percentageToValue(fruitsVeggiesPercent);
-        other = percentageToValue(otherPercent);
-    }
+    public Client(){} //An empty constructor for the client class
 
-    public Client(){} //An empty constructor for the Client class
-
-    public static double getWholeGrains() { //Getter for the wholeGrains variable
-        return wholeGrains;
-    }
-    public static double getProteins() { //Getter for the proteins variable
-        return proteins;
-    }
-    public static double getFruitsVeggies() { //Getter for the fruitsVeggies variable
-        return fruitsVeggies;
-    }
-    public static double getOther() { //Getter for the other variable
-        return other;
-    }
-    public static int getCalories() { //Getter for the calories variable
-        return calories;
-    }
-
-    //Abstract method for the getter for the clientID which will be overwritten in each individual client class
+    //Abstract getters for all the variables in the subclasses that will be overwritten
+    abstract double getWholeGrains();
+    abstract double getProteins();
+    abstract double getFruitsVeggies();
+    abstract double getOther();
+    abstract int getCalories();
     abstract int getClientID();
 
-    private static double percentageToValue(int percentage){ //Method to find a certain percentage from a total value
+    //Method to find a certain percentage from a total value
+    protected static double percentageToValue(int percentage, int total){
 		double ratio = (double) percentage / 100;
-		return ratio * calories;
+		return ratio * total;
 	}
 }
