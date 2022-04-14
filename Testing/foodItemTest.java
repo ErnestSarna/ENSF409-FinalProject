@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 
-public class FoodItemTest{
+public class foodItemTest{
 	
 	public String name = "testFood";
 	public int id = 2;
@@ -138,44 +138,37 @@ public class FoodItemTest{
 	public void testGetTotalGrains(){
 		
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double expectedValue = (double) (grains / 100) * calories;
-		assertEquals("getTotalGrains did not return expected value.", testFoodItem.getTotalGrains(), expectedValue);
+		double expectedValue = (double) grains / 100 * calories;
+		assertEquals("getTotalGrains did not return expected value.", expectedValue, testFoodItem.getTotalGrains(), 0.01);
 	}
 	
 	@Test
 	public void testGetTotalProtein(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double expectedValue = (double) (protein / 100) * calories;
-		assertEquals("getTotalProtein did not return expected value.", testFoodItem.getTotalProtein(), expectedValue);
+		double expectedValue = (double) protein / 100 * calories;
+		assertEquals("getTotalProtein did not return expected value.", expectedValue, testFoodItem.getTotalProtein(), 0.01);
 	}
 	
 	@Test
-	public void testGetTotalFruitsVegs(){
+	public void testGetTotalFruitsVeg(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double expectedValue = (double) (fruitsVeg / 100) * calories;
-		assertEquals("getTotalFruitsVegs did not return expected value.", testFoodItem.getTotalFruitsVegs(), expectedValue);
-	}
+		double expectedValue = (double) fruitsVeg / 100 * calories;
+		assertEquals("getTotalFruitsVegs did not return expected value.", expectedValue, testFoodItem.getTotalFruitsVeg(), 0.01);
+	}	
 	
 	@Test
 	public void testGetTotalOther(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double expectedValue = (double) (other / 100) * calories;
-		assertEquals("getTotalOther did not return expected value.", testFoodItem.getTotalOther(), expectedValue);
+		double expectedValue =  ((double)other / 100) * calories;
+		assertEquals("getTotalOther did not return expected value.", expectedValue, testFoodItem.getTotalOther(), 0.01);
 	}
 	
 	@Test
 	public void testGetTotalCalories(){
 		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		assertEquals("getTotalCalories did not return expected value.", testFoodItem.getTotalCalories(), calories);
+		assertEquals("getTotalCalories did not return expected value.", testFoodItem.getTotalCalories(), calories, 0.01);
 	}
 	
-	@Test
-	public void testPercentageToValue(){
-		FoodItem testFoodItem = new FoodItem(name, id, grains, protein, fruitsVeg, other, calories);
-		double returnValue = testFoodItem.percentageToValue(protein);
-		double expectedValue = (double) (protein / 100) * calories;
-		assertEquals("percentageToValue() did not return expected value", expectedValue, returnValue);
-	}
 		
 		
 	
