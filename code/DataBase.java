@@ -49,6 +49,7 @@ public class DataBase {
             }
 
             myStmt.close();
+            results.close();
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -84,6 +85,7 @@ public class DataBase {
             }
 
             myStmt.close();
+            results.close();
         }
         catch(SQLException e){
             e.printStackTrace();
