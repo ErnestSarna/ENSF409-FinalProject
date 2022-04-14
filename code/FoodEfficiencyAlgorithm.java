@@ -1,4 +1,16 @@
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    2.3
+@since      1.0
+*/
 
+/*
+This Program finds the most efficient way to fill a hamper of fooditems
+accessed from a database.
+*/
 
 package edu.ucalgary.ensf409;
 
