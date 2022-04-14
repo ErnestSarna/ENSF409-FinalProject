@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 import java.util.*;
 
 
-public class orderTest{
+public class OrderTest{
 
 	@Test
 	public void testConstructorNotNull(){
