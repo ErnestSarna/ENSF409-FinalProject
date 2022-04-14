@@ -76,6 +76,8 @@ public class FoodEfficiencyAlgorithm{
         hamper.addFoodList(current);
     }
     
+	//Note function adapted from: https://www.geeksforgeeks.org/recursive-program-to-generate-power-set/
+	//finds all combinations of fooditems from database
     public void powerSet(int index, ArrayList<FoodItem> curr)
     {
         int n = foodItems.size();
@@ -86,7 +88,8 @@ public class FoodEfficiencyAlgorithm{
             return;
         }
  
-        // First print current subset
+        // checks if current arrangment meets the specification
+	// if so added to valid combinations array
 	double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
             for(int i=0; i<curr.size(); i++){
 		fruitsVeg += curr.get(i).getTotalFruitsVeg();
@@ -119,39 +122,6 @@ public class FoodEfficiencyAlgorithm{
         }
     }
 	
-/*
-    //Finds all subsets of an array
-    //Code adapted from: https://www.geeksforgeeks.org/recursive-program-to-generate-power-set/
-    public void powerSet(int index, ArrayList<FoodItem> curr){
-        int n = foodItems.size();
- 
-        // base case
-        if (index == n){
-            double fruitsVeg = 0, grains = 0, proteins = 0, other = 0;
-            for(int i=0; i<curr.size(); i++){
-		fruitsVeg += curr.get(i).getTotalFruitsVeg();
-		grains += curr.get(i).getTotalGrains();
-		proteins += curr.get(i).getTotalProtein();
-		other  += curr.get(i).getTotalOther();
-            }
-            if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
-                proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
-                    validCombinations.add(curr);
-            }
-            return;
-        }
- 
-        // Two cases for every character
-        // (i) We consider the character
-        // as part of current subset
-        // (ii) We do not consider current
-        // character as part of current
-        // subset
-	
-        powerSet(index + 1, curr);
-	curr.add(foodItems.get(index));
-        powerSet(index + 1, curr);
-     } */
     //updates fooditems in the database using food id
     public void updateInventory(){
 	    dataBase.createConnection();
