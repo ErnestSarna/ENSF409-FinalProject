@@ -5,7 +5,7 @@ import java.util.*;
 public class FoodEfficiencyAlgorithm{
     private Hamper hamper;
     private static ArrayList<FoodItem> foodItems;
-    private ArrayList<ArrayList<FoodItem>> validCombinations = new ArrayList<ArrayList<FoodItems>>();
+    private ArrayList<ArrayList<FoodItem>> validCombinations = new ArrayList<ArrayList<FoodItem>>();
 
     private DataBase dataBase = new DataBase();
 
@@ -96,7 +96,7 @@ public class FoodEfficiencyAlgorithm{
             }
             if(fruitsVeg >= hamper.getFamily().getNeededFV() && grains >= hamper.getFamily().getNeededGrains() && 
                 proteins >= hamper.getFamily().getNeededProtein() && other >= hamper.getFamily().getNeededOther()){
-		    System.out.println("adding array of size: " + curr.size());
+		    ;
 		    validCombinations.add(new ArrayList<FoodItem>());
 		    for(int i = 0; i < curr.size(); i++){
 			    validCombinations.get(validCombinations.size()-1).add(curr.get(i).clone());
@@ -105,6 +105,7 @@ public class FoodEfficiencyAlgorithm{
  
         // Try appending remaining characters
         // to current subset
+
         for (int i = index + 1; i < n; i++)
         {
             curr.add(foodItems.get(i).clone());
