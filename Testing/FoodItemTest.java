@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 
 public class FoodItemTest{
 	
+	//Variables used in each test to instantiate FoodItem object
 	public String name = "testFood";
 	public int id = 2;
 	public int grains = 5;
@@ -27,7 +28,7 @@ public class FoodItemTest{
 	public int calories = 30;
 	public int invalid = -1;
 	
-	//Tests the constructor with good data
+	//Tests the constructor with valid data
 	@Test
 	public void testConstructorGoodData(){
 		
