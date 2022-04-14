@@ -209,6 +209,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                     error = true;
                 }
             }
+            int counter = 0;
+            for(int i = 0; i < clients.length; i++){
+                if(clients[i] == 0){ counter++;}
+            }
+            if(counter == clients.length;){
+                JOptionPane.showMessageDialog(this, "Error: Cannot process an order with no people.");
+                error = true;
+            }
             //if no error is found reset text fields and update waiting
             if(!error){
                 cardLayout.show(deck, "Processing");
@@ -417,6 +425,14 @@ public class GUI extends JFrame implements ActionListener, MouseListener, KeyLis
                         }
                         error = true;
                     }
+                }
+                int counter = 0;
+                for(int i = 0; i < clients.length; i++){
+                    if(clients[i] == 0){ counter++;}
+                }
+                if(counter == clients.length;){
+                    JOptionPane.showMessageDialog(this, "Error: Cannot process an order with no people.");
+                    error = true;
                 }
                 if(!error){
                     cardLayout.show(deck, "Processing");
