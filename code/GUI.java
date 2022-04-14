@@ -1,6 +1,6 @@
 /*
 @author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
-@author     Joshua Weir    <a href="">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
 @author     Ernest Sarna   <a href="ernest.sarna@ucalgary.ca"">
 @auhor      Aaron Frerichs <a href="">
 
