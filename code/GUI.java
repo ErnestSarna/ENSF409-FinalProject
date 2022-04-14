@@ -1,3 +1,20 @@
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="">
+@author     Ernest Sarna   <a href="">
+@auhor      Aaron Frerichs <a href="">
+
+@version    2.1.2
+@since      1.0
+*/
+
+/*
+This Program runs the graphical user interface for a foodbank. A user will
+input information about the people in the household they are trying to feed.
+Information collected will be processed elsewhere and a final order form will
+be shown to the user to confirm their order.
+*/
+
 package edu.ucalgary.ensf409;
 
 import java.awt.BorderLayout;
