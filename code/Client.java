@@ -2,9 +2,9 @@ package edu.ucalgary.ensf409;
 
 /*
 @author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
-@author     Joshua Weir    <a href="">
-@author     Ernest Sarna   <a href="ernest.sarna@ucalgary.ca">
-@auhor      Aaron Frerichs <a href="">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
 @version    1.6
 @since      1.0
 */
