@@ -6,6 +6,10 @@
 @version    1.2.2
 @since      1.0
 */
+
+/*
+This Program tests the functionality of the Order class.
+*/
 package edu.ucalgary.ensf409;
 
 import org.junit.Test;
