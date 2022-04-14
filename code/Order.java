@@ -1,3 +1,13 @@
+/*
+@author     Robert Hauta   <a href="mailto:robert.hauta@ucalgary.ca">
+@author     Joshua Weir    <a href="mailto:joshua.weir@ucalgary.ca">
+@author     Ernest Sarna   <a href="mailto:ernest.sarna@ucalgary.ca"">
+@auhor      Aaron Frerichs <a href="mailto:aaron.frerichs@ucalgary.ca">
+@version    1.2.2
+@since      1.0
+*/
+
+
 package edu.ucalgary.ensf409;
 import java.util.*;
 
