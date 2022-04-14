@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args){
-        FoodEfficiencyAlgorithm set = new FoodEfficiencyAlgorithm(null);
-        set.setFoodItems();
         DataBase dataBase = new DataBase();
         dataBase.createConnection();
         dataBase.selectClientNeeds();
@@ -16,6 +14,8 @@ public class Main {
         gui.setVisible(true);
 
         while(true){
+            FoodEfficiencyAlgorithm set = new FoodEfficiencyAlgorithm(null);
+            set.setFoodItems();
             //While user is still adding hampers
             while(gui.getAddAnother()){
                 //Waits for user to choose hamper details
