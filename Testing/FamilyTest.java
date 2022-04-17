@@ -68,7 +68,7 @@ public class FamilyTest{
 	@Test
 	public void testGetNeededGrain(){
 		double foundNeededGrains = family.getNeededGrains();
-		double expectedNeededGrains = 1476.0;
+		double expectedNeededGrains = 1476.0 * 7;
 		
 		assertEquals("Method getNeededGrains() did not return the expected result: ", expectedNeededGrains, foundNeededGrains,0);
 	}
@@ -77,7 +77,7 @@ public class FamilyTest{
 	@Test
 	public void testGetNeededProtein(){
 		double foundNeededProtein = family.getNeededProtein();
-		double expectedNeededProtein = 2448.0;
+		double expectedNeededProtein = 2448.0 * 7;
 		
 		assertEquals("Method getNeededProtein() did not return the expected result: ", expectedNeededProtein, foundNeededProtein,0);
 	}
@@ -86,7 +86,7 @@ public class FamilyTest{
 	@Test
 	public void testGetNeededFV(){
 		double foundNeededFV = family.getNeededFV();
-		double expectedNeededFV = 2286.0;
+		double expectedNeededFV = 2286.0 * 7;
 		
 		assertEquals("Method getNeededFV() did not return the expected results: ", expectedNeededFV, foundNeededFV,0);
 	}
@@ -95,7 +95,7 @@ public class FamilyTest{
 	@Test
 	public void testGetNeededOther(){
 		double foundNeededOther = family.getNeededOther();
-		double expectedNeededOther = 1890.0;
+		double expectedNeededOther = 1890.0 * 7;
 		
 		assertEquals("Method getNeededOther() did not return the expected results: ", expectedNeededOther, foundNeededOther,0);
 	}
@@ -104,7 +104,7 @@ public class FamilyTest{
 	@Test
 	public void testGetNeededCalories() {
 		double foundNeededCalories = family.getNeededCalories();
-		double expectedNeededCalories = 8100.0;
+		double expectedNeededCalories = 8100.0 * 7;
 		
 		assertEquals("Method getNeededCalories() did not return the expected results: ", expectedNeededCalories, foundNeededCalories, 0); 
 	}
