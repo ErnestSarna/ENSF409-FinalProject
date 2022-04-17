@@ -29,7 +29,7 @@ public class ChildUnder8 extends Client{
             throw new IllegalArgumentException();
         }
 
-        calories = totalCalories * 7;
+        calories = totalCalories * 7; //Calorie value multiplied by 7 to account for a week's worth
         wholeGrains = percentageToValue(grainsPercent, calories);
         proteins = percentageToValue(proteinsPercent, calories);
         fruitsVeggies = percentageToValue(fruitsVeggiesPercent, calories);
