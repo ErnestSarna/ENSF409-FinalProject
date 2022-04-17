@@ -29,7 +29,7 @@ public class AdultFemale extends Client{
             throw new IllegalArgumentException();
         }
 
-        calories = totalCalories;
+        calories = totalCalories * 7;
         wholeGrains = percentageToValue(grainsPercent, calories);
         proteins = percentageToValue(proteinsPercent, calories);
         fruitsVeggies = percentageToValue(fruitsVeggiesPercent, calories);
