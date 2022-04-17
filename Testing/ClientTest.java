@@ -49,39 +49,39 @@ public class ClientTest{
     @Test
     public void testGetWholeGrains(){
         double foundWholeGrains = male.getWholeGrains();
-        double expectedWholeGrains = 400.0;
-        assertEquals("Method getWholeGrains did not return the expected result: ",expectedWholeGrains, foundWholeGrains, 0);
+        double expectedWholeGrains = 2800.0;
+        assertEquals("Method getWholeGrains did not return the expected result: ",expectedWholeGrains, foundWholeGrains, 0.01);
     }
 
     //Test the getter for proteins
     @Test
     public void testGetProteins(){
         double foundProteins = female.getProteins();
-        double expectedProteins = 560.0;
-        assertEquals("Method getProteins did not return the expected result: ", expectedProteins, foundProteins, 0);
+        double expectedProteins = 3920.0;
+        assertEquals("Method getProteins did not return the expected result: ", expectedProteins, foundProteins, 0.01);
     }
 
     //Test the getter for fruitsVeggies
     @Test
     public void testGetFruitsVeggies(){
         double foundFV = childOver.getFruitsVeggies();
-        double expectedFV = 682.0;
-        assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedFV, foundFV,0);
+        double expectedFV = 4774.0;
+        assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedFV, foundFV,0.01);
     }
 
     //Test the getter for other
     @Test
     public void testGetOther(){
         double foundOther = childUnder.getOther();
-        double expectedOther = 210.0;
-        assertEquals("Method getOther did not return the expected result: ", expectedOther, foundOther,0);
+        double expectedOther = 1470.0;
+        assertEquals("Method getOther did not return the expected result: ", expectedOther, foundOther,0.01);
     }
 
     //Test the getter for calories
     @Test
     public void testGetCalories(){
         int foundCalories = male.getCalories();
-        int expectedCalories = 2500;
+        int expectedCalories = 17500;
         assertEquals("Method getCalories did not return the expected result: ", expectedCalories, foundCalories);
     }
 
@@ -117,3 +117,4 @@ public class ClientTest{
         assertEquals("Method getClientID did not return the expected result: ",expectedID, foundID);
     }
 }
+
